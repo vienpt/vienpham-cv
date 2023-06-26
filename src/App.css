@@ -79,22 +79,27 @@
   text-transform: capitalize;
 }
 .cv-journey__skill-edu-interest div {
-  padding: 20px;
+  padding: 16px 0 16px 0;
 }
 .cv-journey__skill-edu-interest div span {
   display: inline-flex;
   padding: 5px 0 5px 0;
   text-transform: capitalize;
 }
-.cv-journey__skill-edu-interest-tag {
-  display: inline-flex;
-}
+/*.cv-journey__skill-edu-interest-tag {}*/
 
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+@media (max-width: 760px) {
+  .cv-info__introduce {
+    display: flex;
+    flex-flow: wrap;
+    gap: 16px;
+    margin-top: 1rem;
+  }
+  .cv-journey {
+    display: flex;
+    flex-direction: column;
+  }
+  .cv-journey__skill-edu-interest div {
+    padding: 0;
+  }
 }
