@@ -1,0 +1,100 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.cv-info {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
+.cv-info__introduce {
+  color: #888888;
+  display: inline-flex;
+  gap: 4rem;
+}
+.cv-info__introduce a {
+  display: flex;
+  align-items: center;
+}
+
+.cv-journey {
+  display: grid;
+  border-style: dot-dash;
+  border-width: 1px;
+  border-color: #646cff;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: min-content;
+  grid-gap: 10px;
+  margin-top: 20px;
+}
+
+.cv-journey__experience {
+  grid-column: span 2;
+}
+.cv-journey__experience h2, .cv-journey__skill-edu-interest h2 {
+  text-transform: capitalize;
+  color: var(--blue-color);
+}
+.cv-journey__experience-title,
+.cv-journey__experience-company,
+.cv-journey__skill-edu-interest-title,
+.cv-journey__skill-edu-interest-company {
+  font-size: 20px;
+  font-weight: 600;
+}
+.cv-journey__experience-company {
+  color: var(--gray-color);
+}
+.cv-journey__experience div span {
+  display: inline-flex;
+  padding: 5px 5px 5px 0;
+  text-transform: capitalize;
+}
+.cv-journey__experience-date, .cv-journey__skill-edu-interest-date {
+  margin-top: -10px;
+  font-style: oblique;
+  letter-spacing: 0.025rem;
+  font-weight: 300;
+}
+
+.cv-journey__experience-description {
+  max-width: 700px;
+}
+.cv-journey__experience-description li {
+  padding: 3px 0 3px 0;
+}
+.cv-journey__experience-description li::marker {
+  unicode-bidi: isolate;
+  font-variant-numeric: tabular-nums;
+  text-transform: none;
+  text-indent: 0;
+  text-align: start;
+  text-align-last: start;
+  color: var(--blue-color);
+}
+
+.cv-journey__skill-edu-interest-title {
+  text-transform: capitalize;
+}
+.cv-journey__skill-edu-interest div {
+  padding: 20px;
+}
+.cv-journey__skill-edu-interest div span {
+  display: inline-flex;
+  padding: 5px 0 5px 0;
+  text-transform: capitalize;
+}
+.cv-journey__skill-edu-interest-tag {
+  display: inline-flex;
+}
+
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
