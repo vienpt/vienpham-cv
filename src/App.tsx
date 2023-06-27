@@ -1,4 +1,5 @@
 import './App.css'
+import Review from '../components/Review.tsx'
 
 function App() {
   return (
@@ -144,6 +145,9 @@ function App() {
             <p className={'cv-journey__skill-edu-interest-tag'}>Swimming, running, traveling, riding</p>
           </div>
         </div>
+      </div>
+      <div>
+        <Review />
       </div>
     </>
   )
