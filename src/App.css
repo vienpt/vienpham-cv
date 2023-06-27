@@ -92,7 +92,7 @@
   .cv-info__introduce {
     display: flex;
     flex-flow: wrap;
-    gap: 16px;
+    gap: 8px;
     margin-top: 1rem;
   }
   .cv-journey {
@@ -101,5 +101,8 @@
   }
   .cv-journey__skill-edu-interest div {
     padding: 0;
+  }
+  .cv-journey__experience-company {
+    font-size: 1em;
   }
 }
