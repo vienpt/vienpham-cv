@@ -1,0 +1,32 @@
+.cv-review-popup {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+    max-width: 350px;
+    padding: 10px 10px 10px 10px;
+    background-color: var(--blue-color);
+    border-radius: 10px;
+    color: black;
+    box-shadow: 0 10px 20px -5px rgb(253, 140, 1 , 1), 0 8px 10px -6px rgba(1, 237, 253);
+}
+
+.cv-review-popup__title {
+    display: inline-flex;
+    padding: 5px;
+    align-items: center;
+}
+.cv-review-popup__title button {
+    background: transparent;
+    padding: 4px;
+}
+
+.cv-review-popup__icon {
+    display: inline-flex;
+    gap: 45px;
+    align-content: center;
+}
+.cv-review-popup__icon button {
+    background: transparent;
+    padding: 0;
+}

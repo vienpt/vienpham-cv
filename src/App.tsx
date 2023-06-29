@@ -1,7 +1,21 @@
 import './App.css'
 import Review from '../components/Review.tsx'
+import {useCookies} from "react-cookie";
+import {useEffect, useState} from "react";
 
 function App() {
+  const [reviewCookie, setReviewCookie]= useCookies(['is-review'])
+  const [isReviewDisplayed, setIsReviewDisplayed] = useState<boolean>(false)
+
+  useEffect(() => {
+    if (!reviewCookie["is-review"] || typeof reviewCookie["is-review"] === "undefined") {
+      setTimeout(() => {
+        setIsReviewDisplayed(true)
+      }, 5000)
+    }
+
+  }, [])
+
   return (
     <>
       <div className={"cv-info"}>
@@ -35,21 +49,37 @@ function App() {
         </div>
       </div>
 
+      <div className={'cv-info-about'}>
+        <h2>About Summary</h2>
+        <ul style={{ display: 'grid', gap: '5px', listStyleType: '', minWidth: '320px' }}>
+          <li>More than 6 years of experience in Web application development & designing</li>
+          <li>
+            Hands on experience in Web Application working with UI/UX Design technologies, front-end technologies/framework and libraries like
+            Figma, illustrator, Prototype, JavaScript, ES6, JSON, CSS, XML, AJAX.
+          </li>
+          <li>Experience working in various Software Development Methodologies like Agile, Waterfall, SCRUM and TDD.</li>
+          <li>Good at Documenting and Understanding User requirements and Systems application.</li>
+          <li>Excellent Client interaction skills and proven experience in working independently as well as in team</li>
+          <li>Experienced in Creating Domain model, Use Case diagrams, Sequence diagrams, and Object Model.</li>
+          <li>Experienced working with command line interface</li>
+        </ul>
+      </div>
+
       <div className="cv-journey">
         <div className={'cv-journey__experience'}>
           <h2>relevant experiences</h2>
           {/*scalefast          */}
           <div>
-            <span className={'cv-journey__experience-title'}>frontend developer</span>
+            <span className={'cv-journey__experience-title'}>Senior Vue.js frontend developer</span>
             <span className={'cv-journey__experience-company'}>@Air360 / Scalefast</span>
             <div className={'cv-journey__experience-date'}>
               November 2022 - May 2023 <span>// Ho Chi Minh, Vietnam</span>
             </div>
             <ul className="cv-journey__experience-description">
-              <li>Worked closely with the Product team to develop new features for our web application. Created the user interface, integrating data from the backend API, writing end-to-end tests, and fixing bugs.
-                Followed a rigorous process of development, code review, and testing to ensure <br />high-quality deliverables.
+              <li>Worked closely with the Product team from UI/UX on Figma to develop new features for our web application. Created the user interface, integrating data from the backend API, writing end-to-end tests, and fixing bugs.
+                Followed a rigorous process of development, code review, and testing to ensure high-quality deliverables.
               </li>
-              <li>Worked with Vue.js 3 by using Nuxt composition API and Nuxt 3, Windicss, Oruga, Pinia, and GraphQL via Nuxt modules that interact with Cubejs, Chartjs, and TypeScript for building Dashboard web application and Chrome extension.
+              <li>Designed & developed using HTML5, CSS3, Vue.js(3), Nuxt composition API/Nuxt 3, Windicss, Oruga, Pinia, and GraphQL via Nuxt modules that interact with Cubejs, Chartjs, and TypeScript for building Dashboard web application and Chrome extension.
               </li>
               <li>Participated in daily meeting scrums to update my team on my progress, challenges and goals. Attended planning sprint meetings every two weeks to review the completed tasks, prioritize the backlog and set the objectives for the next sprint.</li>
             </ul>
@@ -59,55 +89,25 @@ function App() {
             <span className={'cv-journey__experience-title'}>Software Engineer</span>
             <span className={'cv-journey__experience-company'}>@ArchwayFactory / Archway</span>
             <div className={'cv-journey__experience-date'}>
-              April 2017 - October 2022 <span>// Ho Chi Minh, Vietnam</span>
+              April 2016 - October 2022 <span>// Ho Chi Minh, Vietnam</span>
             </div>
             <ul className={'cv-journey__experience-description'}>
+              <li>Collaborated with a small team (3-6 members) to develop outsource project with Agile, SCRUM.</li>
               <li>
-                Created prototype and MVP projects using various technologies. On the frontend, use Vue.js, Nuxt and Vuetify to build responsive and user-friendly interfaces.
-                On the backend, use .Net Core (v3,5,6) and Java SpringBoot (Gradle build) to develop robust and scalable applications.
+                R&D prototype and MVP projects using various technologies. Front-end using Vue.js(2), Nuxt, where back end is Java SpringBoot and .Net core REST webservice.
+              </li>
+              <li>Designed and developed User interface Web components using Vue, authenticate/authorization using OAuth2.0 workflow to apply signIn/out via third party app likes: Zoho CRM, Azure AD.</li>
+              <li>
+                Designed and build Nuxt landing page. Hands on experience in websites and site generators using JAMStack architecture. Used frameworks such as VuePress, VitePress, Nuxt, and Jekyll, and deployed them to platforms such as Netlify and Vercel.
               </li>
               <li>
-                Handled CI/CD pipeline (Github Actions, Azure Devops), setting Docker, Helm, and Ingress files to deploy micro-services,
+                Worked on CI/CD pipeline tools like Github Actions, Azure Devops. Setting Docker, Helm, and Ingress files to deploy micro-services,
                 static web site/application on Azure/GCP Cloud and monitoring applications by using Grafana, Prometheus, Kibana, Elasticsearch, Fluentd.
               </li>
               <li>
-                Created websites and site generators using JAMStack architecture. Used frameworks such as VuePress, VitePress, Nuxt, and Jekyll, and deployed them to platforms such as Netlify and Vercel.
+                Experience with JUnit, Cypress to implement unit test, integration test, and e2e test for web application.
               </li>
-              <li>
-                Worked with OAuth2.0 likes: Zoho CRM, Azure AD.
-              </li>
-              <li>
-                Designed and modeled software systems and created diagrams that show the system architecture and execution flow accurately by using Astah.
-              </li>
-
               {/*Familiar with using Linux, command, terminal.*/}
-            </ul>
-          </div>
-          {/*pasonatech*/}
-          <div>
-            <span className={'cv-journey__experience-title'}>Developer</span>
-            <span className={'cv-journey__experience-company'}>@PasonaTech</span>
-            <div className={'cv-journey__experience-date'}>
-              April 2016 - March 2017 <span>// Ho Chi Minh, Vietnam</span>
-            </div>
-            <ul className="cv-journey__experience-description">
-              <li>Collaborated with a small team to develop outsource project.
-              </li>
-              <li>Worked closely with Japan senior engineer to develop, maintain, document, and test web app using Asp.Net, jQuery, JavaScript, Bootstrap.
-              </li>
-            </ul>
-          </div>
-          {/*zigen*/}
-          <div>
-            <span className={'cv-journey__experience-title'}>Developer</span>
-            <span className={'cv-journey__experience-company'}>@ZIGExN VeNtura</span>
-            <div className={'cv-journey__experience-date'}>
-              Jan 2016 - March 2016 <span>// Ho Chi Minh, Vietnam</span>
-            </div>
-            <ul className="cv-journey__experience-description">
-              <li>Collaborated with a small team for training Ruby on Rails courses.
-              </li>
-              <li>Have a changed to learn about command line, Github, Gitlab, Linux.</li>
             </ul>
           </div>
           {/*intec*/}
@@ -118,7 +118,7 @@ function App() {
               Otc 2013 - Otc 2015 <span>// Ho Chi Minh, Vietnam</span>
             </div>
             <ul className="cv-journey__experience-description">
-              <li>Maintained and tested outsource project with .Net stack: VB6, MVC 3.</li>
+              <li>Maintained, designed testcase and tested outsource project with .Net stack: VB6, MVC 3.</li>
             </ul>
           </div>
         </div>
@@ -129,7 +129,7 @@ function App() {
             <p className={'cv-journey__skill-edu-interest-tag'}>JavaScript, TypeScript, HTML, CSS, C#, Java, SQL.</p>
 
             <span className="cv-journey__skill-edu-interest-title">libraries & frameworks</span>
-            <p className={'cv-journey__skill-edu-interest-tag'}>Vuejs, TailwindCSS, Nuxtjs, Pinia, Oruga, GraphQL, Vuetify, .Net Core, SpringBoot, Azure AD, Swagger, Helm.</p>
+            <p className={'cv-journey__skill-edu-interest-tag'}>Vuejs, TailwindCSS, Nuxtjs, Pinia, Oruga, GraphQL, Vuetify, Cypress, WebdriverIO, .Net Core, SpringBoot, Azure AD, Swagger, Helm.</p>
 
             <span className="cv-journey__skill-edu-interest-title">tools & platforms</span>
             <p className={'cv-journey__skill-edu-interest-tag'}>Git, Netlify, Docker, Kubernetes, Jira, Trello, Github, Gitlab, Figma, Azure DevOps, AKS, GCP, Astah.</p>
@@ -146,9 +146,18 @@ function App() {
           </div>
         </div>
       </div>
-      <div>
-        <Review />
-      </div>
+
+      {
+        isReviewDisplayed
+          ?
+
+            <div style={{ position: 'relative'}}>
+              {/*{children}*/}
+              <Review />
+            </div>
+          : null
+      }
+
     </>
   )
 }
