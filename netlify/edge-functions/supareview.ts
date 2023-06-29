@@ -1,8 +1,8 @@
 import type { Context } from 'https://edge.netlify.com'
 import { createClient } from 'https://esm.sh/@supabase/supabase-js';
 
-const supabaseUrl = Deno.env.get("SUPABASE_URL")
-const supabaseKey = Deno.env.get("SUPABASE_KEY")
+const supabaseUrl = Netlify.env.get("SUPABASE_URL")
+const supabaseKey = Netlify.env.get("SUPABASE_KEY")
 const supabase = createClient(supabaseUrl, supabaseKey)
 
 export default async (request: Request, { cookies, geo, json}: Context) => {
