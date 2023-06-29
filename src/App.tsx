@@ -4,7 +4,7 @@ import {useCookies} from "react-cookie";
 import {useEffect, useState} from "react";
 
 function App() {
-  const [reviewCookie, setReviewCookie]= useCookies(['is-review'])
+  const [reviewCookie]= useCookies(['is-review'])
   const [isReviewDisplayed, setIsReviewDisplayed] = useState<boolean>(false)
 
   useEffect(() => {

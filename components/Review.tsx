@@ -1,5 +1,5 @@
 import "./Review.css"
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {useCookies} from "react-cookie";
 
 interface Satisfied {
@@ -52,7 +52,6 @@ export default function Review() {
   const handleSatisfied = async (score : number) => {
     // call mutation API
     const data = await fetch(`/supareview?score=${score}`)
-    debugger
     if (data.status === 200) {
       setReviewCookie('is-review', true)
     }
@@ -63,7 +62,11 @@ export default function Review() {
     }, 3000)
   }
 
-  // console.log('isReview', isReviewCookie)
+  useEffect(() => {
+    if (reviewCookie["is-review"]) {
+      setIsReviewActive(true)
+    }
+  }, [])
 
   return (
     <>
