@@ -1,3 +1,6 @@
 [[edge_functions]]
 path = "/supareview"
 function = "supareview"
+
+[[plugins]]
+package = "netlify-plugin-bundle-env"
