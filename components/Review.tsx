@@ -88,7 +88,7 @@ export default function Review() {
               }
             </div>
 
-            <div style={{ display: 'flex', flex: '1 1 0%', justifyContent: 'space-between', paddingTop: '5px'}}>
+            <div style={{ display: 'flex', flex: '1 1 0%', justifyContent: 'space-between', padding: '5px 10px 0 5px'}}>
               <span style={{ fontSize: '13px', textTransform: 'capitalize' }}>dissatisfaction</span>
               <span style={{ fontSize: '13px' }}>Very satisfied</span>
             </div>

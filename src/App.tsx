@@ -51,7 +51,7 @@ function App() {
 
       <div className={'cv-info-about'}>
         <h2>About Summary</h2>
-        <ul style={{ display: 'grid', gap: '5px', listStyleType: '', minWidth: '320px' }}>
+        <ul style={{ display: 'grid', gap: '5px', listStyleType: '', minWidth: '280px' }}>
           <li>More than 6 years of experience in Web application development & designing</li>
           <li>
             Hands on experience in Web Application working with UI/UX Design technologies, front-end technologies/framework and libraries like
