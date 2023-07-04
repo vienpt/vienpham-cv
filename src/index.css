@@ -28,7 +28,7 @@ a {
   border-radius: 10px;
   text-decoration: inherit;
 }
-a:hover {
+.cv-info a:hover {
   color: black;
   background-color: var(--primary-color);
 }
@@ -48,8 +48,25 @@ h1 {
 }
 
 h2, h3 {
-  margin: 2px 0 2px 0;
+  /* margin: 2px 0 2px 0; */
 }
+
+h2 > a {
+  padding: 0;
+  color: var(--blue-color);
+}
+h2 > a:hover {
+  color: var(--blue-color);
+}
+
+h3 > a {
+  padding: 0;
+}
+
+address > a {
+  padding: 0;
+}
+
 
 button {
   border-radius: 8px;
