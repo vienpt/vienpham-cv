@@ -27,7 +27,7 @@
 }
 
 .cv-info__introduce {
-  color: #888888;
+  color: var(--gray-color);
   display: inline-flex;
   gap: 4rem;
   padding-top: 10px;

@@ -61,18 +61,18 @@ function App() {
             </a>
           </address>
           <a href={"https://twitter.com/vienvee_bb"} target={"_blank"}>
-            <img src={"./twitter.svg"} />
+            <img src={"./twitter.svg"} alt="twitter" />
             <span>vienvee_bb</span>
           </a>
           <a href={"https://github.com/vienpt"} target={"_blank"}>
-            <img src={"./github.svg"} />
+            <img src={"./github.svg"} alt="github" />
             <span>vienpt</span>
           </a>
           <a
             href={"https://www.linkedin.com/in/vien-pham-887255a1/"}
             target={"_blank"}
           >
-            <img src={"./linkedin.svg"} />
+            <img src={"./linkedin.svg"} alt="linkedin" />
             <span>vien-pham</span>
           </a>
         </div>
@@ -97,7 +97,7 @@ function App() {
               margin: '2px',
             }}
           >
-            <button className="svg-octicon" style={{ backgroundColor: 'transparent', padding: '4px 4px 4px 4px'}}>
+            <button type="button" className="svg-octicon" style={{ backgroundColor: 'transparent', padding: '4px 4px 4px 4px'}}>
               <svg
                 aria-hidden="true"
                 height="16"
