@@ -285,7 +285,7 @@ function App() {
               <span className="cv-journey__skill-edu-interest-date">
                 2009 - 2013 // Ho Chi Minh, Vietnam
               </span>
-              <p>Bachelor of Science in Information Technology</p>
+              <p>Bachelor of Science in Information Technology at<a style={{ color: 'var(--blue-color)' }} href="https://www.hcmus.edu.vn" target="_blank">University of Science</a></p>
             </div>
             <div>
               <h2>Interests</h2>
