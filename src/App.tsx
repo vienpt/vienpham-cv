@@ -18,14 +18,13 @@ function App() {
         setIsReviewDisplayed(true);
       }, 5000);
     }
-    console.log('isShowNav', isShowNav)
   }, []);
 
   function ShowNavContent() {
     return (
       <div className="nav" style={{
           position: 'absolute',
-          backgroundColor: 'white',
+          backgroundColor: 'color(srgb 0.1412 0.1412 0.1412)',
           minWidth: '280px',
           display: 'flex',
           flex: '0 1 auto',
@@ -78,16 +77,8 @@ function App() {
         </div>
       </div>
 
-      <div style={{ border: '1px solid #dddddd', borderRadius: '5px', minHeight: '100vh'}}>
-        <div
-          style={{
-            position: "sticky",
-            top: "0",
-            backgroundColor: 'white',
-            padding: '4px',
-            borderBottom: '1px solid #dddddd',
-          }}
-        >
+      <div className="cv-readme">
+        <div className="cv-readme-hightlight">
           <h5 
             style={{
               display: 'flex',
@@ -117,7 +108,7 @@ function App() {
           </h5>
           { isShowNav ? ShowNavContent() : <></> }
         </div>
-        <div style={{ padding: '0 16px 0 16px' }}>
+        <div className="cv-summary">
         {/* summary */}
         <div className={"cv-info-about"}>
           <h2>
@@ -136,28 +127,21 @@ function App() {
               designing
             </li>
             <li>
-              Hands on experience in Web Application working with UI/UX Design
-              technologies, front-end technologies/framework and libraries like
-              Figma, illustrator, Prototype, JavaScript, ES6, JSON, CSS, XML,
-              AJAX.
+              Proven experience in primarily front-end programming: Vue 3 Composition API, TypeScript, Vue router, Tailwind CSS, Pinia
+            </li>
+
+            <li>Proficiency in HTML, CSS/PostCSS and JavaScript ES6, implementing responsive web design, and building complex layouts</li>
+            <li>Good at Documenting</li>
+            <li>Experience in Java SpringBoot and .Net core backend language</li>
+            <li>Experience in debugging, authentication, and authorization</li>
+            <li>Practical knowledge of micro services and designing/building REST APIs</li>
+            <li>
+              Strong capability of meeting project milestones and comfortable with agile development methodology and common CI/CD practices
             </li>
             <li>
-              Experience working in various Software Development Methodologies
-              like Agile, Waterfall, SCRUM and TDD.
+              Strong ability to work independently while still being collaborative and inclusive
             </li>
-            <li>
-              Good at Documenting and Understanding User requirements and
-              Systems application.
-            </li>
-            <li>
-              Excellent Client interaction skills and proven experience in
-              working independently as well as in team
-            </li>
-            <li>
-              Experienced in Creating Domain model, Use Case diagrams, Sequence
-              diagrams, and Object Model.
-            </li>
-            <li>Experienced working with command line interface</li>
+            <li>Familiarity with common frontend workflow such as NPM, ESLint, Prettier, etc. </li>
           </ul>
         </div>
         {/* experience */}
@@ -280,7 +264,7 @@ function App() {
                 libraries & frameworks
               </span>
               <p className={"cv-journey__skill-edu-interest-tag"}>
-                Vuejs, TailwindCSS, Nuxtjs, Pinia, Oruga, GraphQL, Vuetify,
+                Vuejs, Reactjs, TailwindCSS, Nuxtjs, Nextjs, Pinia, Oruga, GraphQL, Vuetify,
                 Cypress, WebdriverIO, .Net Core, SpringBoot, Azure AD, Swagger,
                 Helm.
               </p>

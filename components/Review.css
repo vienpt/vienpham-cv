@@ -2,7 +2,7 @@
     position: fixed;
     bottom: 0;
     right: 0;
-    margin: 10px;
+    margin: 10px 20px 10px 0;
     max-width: 280px;
     padding: 0 5px 5px 5px;
     background-color: var(--white-color);
@@ -23,7 +23,7 @@
 
 .cv-review-popup__icon {
     display: inline-flex;
-    gap: 25px;
+    gap: 20px;
     align-content: center;
 }
 .cv-review-popup__icon button {
