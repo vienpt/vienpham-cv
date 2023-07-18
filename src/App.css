@@ -49,15 +49,17 @@
 }
 
 .cv-readme {
-  border: 1px solid;
-  border-radius: 2px;
+  border: 1px solid #5e5e5e;
+  border-radius: 5px;
+  /* box-shadow: 0 10px 10px #d9d9d9; */
   /* min-height: 100vh; */
 
   .cv-readme-hightlight {
     position: sticky;
     top: 0;
     padding: 4px 0;
-    border-bottom: 1px solid;
+    border-radius: 5px 5px 0 0;
+    border-bottom: 1px solid #5e5e5e;
     background-color: color(srgb 0.1412 0.1412 0.1412);
   }
 
@@ -169,12 +171,14 @@
 
   .cv-readme {
     border: none;
+    box-shadow: none;
+    border-radius: 0;
   }
   .cv-readme-hightlight {
     position: sticky;
     top: 0;
     padding: 4px;
-    border-top: 1px solid;
+    border-radius: 0 !important;
     border-bottom: 1px solid;
     opacity: 1
   }

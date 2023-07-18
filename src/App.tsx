@@ -153,7 +153,7 @@ function App() {
             {/*scalefast          */}
             <div style={{ marginTop: '-10px'}}>
               <span className={"cv-journey__experience-title"}>
-                Senior Vue.js frontend developer
+                M/S Frontend developer (Vuejs)
               </span>
               <span className={"cv-journey__experience-company"}>
                 @Air360 / Scalefast
@@ -163,19 +163,13 @@ function App() {
               </div>
               <ul className="cv-journey__experience-description">
                 <li>
-                  Worked closely with the Product team from UI/UX on Figma to
-                  develop new features for our web application. Created the user
-                  interface, integrating data from the backend API, writing
-                  end-to-end tests, and fixing bugs. Followed a rigorous process
-                  of development, code review, and testing to ensure
-                  high-quality deliverables.
+                  Collaborate closely with squad teams, including Product, Design, and QA members, to get requirements
+                  into functional and visually appealing frontend solutions.
                 </li>
                 <li>
-                  Designed & developed using HTML5, CSS3, Vue.js(3), Nuxt
-                  composition API/Nuxt 3, Windicss, Oruga, Pinia, and GraphQL
-                  via Nuxt modules that interact with Cubejs, Chartjs, and
+                  Development with Vue 3, Nuxt composition API/Nuxt 3, GraphQL via Nuxt modules that interact with Cubejs, Chartjs, and
                   TypeScript for building Dashboard web application and Chrome
-                  extension.
+                  extension base on component-based architecture and start management pattern.
                 </li>
                 <li>
                   Participated in daily meeting scrums to update my team on my
@@ -264,7 +258,7 @@ function App() {
                 libraries & frameworks
               </span>
               <p className={"cv-journey__skill-edu-interest-tag"}>
-                Vuejs, Reactjs, TailwindCSS, Nuxtjs, Nextjs, Pinia, Oruga, GraphQL, Vuetify,
+                Vuejs, Reactjs, TailwindCSS, Nuxtjs, Nextjs, Windicss, Pinia, Oruga, GraphQL, Vuetify,
                 Cypress, WebdriverIO, .Net Core, SpringBoot, Azure AD, Swagger,
                 Helm.
               </p>

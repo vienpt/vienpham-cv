@@ -106,8 +106,17 @@ button:focus-visible {
   }
 
   #cv-mail,
-  #cv-phone {
-    color: #1a1a1a;
+  #cv-phone,
+  #readme {
+    color: #1a1a1a !important;
+  }
+
+  .cv-readme {
+    border: 1px solid #d9d9d9 !important;
+  }
+  .cv-readme-hightlight {
+    border-bottom: 1px solid #d9d9d9 !important;
+    background-color: white !important;
   }
 }
 
