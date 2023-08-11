@@ -71,7 +71,7 @@
   }
 }
 
-.cv-summary {
+.cv-summary, .cv-journey {
   padding: 0 16px;
 }
 
@@ -161,6 +161,7 @@
   .cv-journey {
     display: flex;
     flex-direction: column;
+    margin: 10px;
   }
   .cv-journey__skill-edu-interest div {
     padding: 0;
@@ -191,7 +192,7 @@
     }
 
     .cv-readme {
-      min-height: '100vh';
+      min-height: 100vh;
     }
 }
 
