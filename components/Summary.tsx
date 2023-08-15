@@ -3,11 +3,13 @@ interface Props {
 }
 
 export default function Summary({ summary }: Props) {
-  const ulStyle = {
-    display: "grid",
-    gap: "5px",
-    listStyleType: "",
-    minWidth: "280px",
+  const style = {
+    ul: {
+      display: "grid",
+      gap: "5px",
+      listStyleType: "",
+      minWidth: "280px",
+    }
   }
 
   return (
@@ -15,7 +17,7 @@ export default function Summary({ summary }: Props) {
       <h2>
         <a id="summary" href="#summary">Summary</a>
       </h2>
-      <ul style={ulStyle}>
+      <ul style={style.ul}>
         {summary.map((item: string) =>
           <li key={item}>
             {item}

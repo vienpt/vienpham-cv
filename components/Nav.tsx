@@ -1,5 +1,9 @@
 
-export default function Nav({ onClickShowNav }: any) {
+interface NavProps {
+  onShowNav: () => void;
+}
+
+export default function Nav({ onShowNav }: NavProps) {
   return (
     <div className="nav" style={{
       position: 'absolute',
@@ -14,8 +18,8 @@ export default function Nav({ onClickShowNav }: any) {
       gap: '10px'
     }}
     >
-      <a href="#summary" onClick={onClickShowNav}>Summary</a>
-      <a href="#journey" onClick={onClickShowNav}>Revelant experiences</a>
+      <a href="#summary" onClick={onShowNav}>Summary</a>
+      <a href="#journey" onClick={onShowNav}>Revelant experiences</a>
     </div>
   )
 }

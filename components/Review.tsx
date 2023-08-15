@@ -1,5 +1,5 @@
 import "./Review.css"
-import {useEffect, useRef, useState} from "react";
+import { useRef } from "react";
 import {useCookies} from "react-cookie";
 
 interface Satisfied {
@@ -8,11 +8,15 @@ interface Satisfied {
   img: string
 }
 
-export default function Review() {
+interface Props {
+  isReviewActive: boolean
+  closeReview: () => void
+  updateIsReviewActive: (val: boolean) => void
+}
+
+export default function Review({ isReviewActive, closeReview, updateIsReviewActive }: Props) {
   const reviewRef = useRef<null | HTMLDivElement>(null)
-  const [isReviewActive, setIsReviewActive] = useState<boolean>(false)
-  const [showMessage, setShowMessage] = useState<boolean>(false)
-  const [reviewCookie, setReviewCookie]= useCookies(['is-review'])
+  const [, setReviewCookie]= useCookies(['is-review'])
 
   // dum data
   const satisfies: Satisfied[] = [
@@ -43,39 +47,24 @@ export default function Review() {
     }
   ]
 
-  // close review popup
-  const closeReview = () => {
-    setIsReviewActive(true)
-  }
-
   // handle satisfied
   const handleSatisfied = async (score : number) => {
-    // call mutation API
     const data = await fetch(`/supareview?score=${score}`)
     if (data.status === 200) {
       setReviewCookie('is-review', true)
     }
-    setIsReviewActive(true)
-    setShowMessage(true)
-    setTimeout(() => {
-      setShowMessage(false)
-    }, 3000)
+
+    updateIsReviewActive(false)
   }
 
-  useEffect(() => {
-    if (reviewCookie["is-review"]) {
-      setIsReviewActive(true)
-    }
-  }, [])
-
   return (
-    <>
-      { !isReviewActive || false ? (
+    <div style={{ position: "relative" }}>
+      { isReviewActive && (
         <div ref={reviewRef} className={'cv-review-popup'}>
           <div className={'cv-review-popup__title'}>
             <p>Overall, are you satisfied with this website?</p>
             <button onClick={closeReview}>
-              <img src={'./review/close.svg'}/>
+              <img src={'./review/close.svg'} alt="close-icon" />
             </button>
           </div>
           <div>
@@ -83,7 +72,7 @@ export default function Review() {
               {
                 satisfies.map((m) =>
                   <button key={m.id} onClick={() => handleSatisfied(m.score)}>
-                    <img src={m.img}/>
+                    <img src={m.img} alt="smile-icon" />
                   </button>)
               }
             </div>
@@ -94,29 +83,7 @@ export default function Review() {
             </div>
           </div>
         </div>
-      ) : null }
-
-      {
-        showMessage
-          ?
-          <div className={'cv-review-popup'}>
-            <div>
-              <span>Thank you for your feedback. I love it.</span>
-
-              <img
-                style={{
-                  width: '28px',
-                  height: '28px',
-                  verticalAlign: 'middle',
-                  marginBottom: '5px',
-                  marginLeft: '5px'
-                }}
-                src={'./cat.svg'}
-              />
-            </div>
-          </div>
-          : null
-      }
-    </>
+      )}
+    </div>
   )
 }

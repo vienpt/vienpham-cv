@@ -5,8 +5,7 @@ export default function Readme() {
   const [isShowNav, setIsShowNav] = useState<boolean>(false)
 
   function handleShowNav() {
-    setIsShowNav(() => !isShowNav)
-    console.log('isShowNav', isShowNav)
+    setIsShowNav((val) => !val)
   }
 
   return (
@@ -38,7 +37,7 @@ export default function Readme() {
           readme
         </a>
       </h5>
-      { isShowNav && <Nav onClickShowNav={handleShowNav}></Nav> }
+      { isShowNav && <Nav onShowNav={handleShowNav}></Nav> }
     </div>
   )
 }

@@ -88,8 +88,8 @@ const data: Resume = {
     'Proficiency with modern front-end technologies (Vue2/3, Nuxtjs, Tailwind CSS, Vuex/Pinia, HTML, CSS3, PostCSS)',
     'Familiarity in unit test with Jest, e2e test (Cypress, Webdriverio), Git, JSON, Reactjs, Nextjs, GraphQL, TypeScript',
     'Experience develop backend with Java SpringBoot and ASP.Net Core ',
-    'Practical knowledge of built microservices and CI/CD',
-    'Strong ability to work independently while still being collaborative and inclusive',
+    'Practical knowledge of continuous integration and deployment (CI/CD) pipelines',
+    'Ability to work independently while still being collaborative and inclusive',
   ],
   experiences: [
     {
