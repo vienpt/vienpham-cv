@@ -6,7 +6,6 @@ import Journey from "../components/Journey.tsx";
 import Message from "../components/Message.tsx";
 import Readme from "../components/Readme.tsx";
 import data from "../data.ts";
-
 import { useCookies } from "react-cookie";
 import { useEffect, useRef, useState } from "react";
 
