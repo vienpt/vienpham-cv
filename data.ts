@@ -147,8 +147,8 @@ const data: Resume = {
     city: 'Ho Chi Minh',
     country: 'Vietnam',
     periodTime: {
-      startDate: String(new Date().getFullYear()), // 2009
-      endDate: String(new Date().getFullYear()), // 2013
+      startDate: '2009-08', // 2009
+      endDate: '2013', // 2013
     },
     title: 'Bachelor of Science in Information Technology',
     url: 'https://www.hcmus.edu.vn',

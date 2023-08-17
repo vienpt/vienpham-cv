@@ -10,7 +10,7 @@ export default function EducationSection(props: Education) {
       </span>
       <span className="cv-journey__skill-edu-interest-date">
         {
-          `${convertWorkingTime(props.periodTime.startDate)} - ${convertWorkingTime(props.periodTime.endDate)}
+          `2009 - 2013
           // ${props.city}, ${props.country}`
         }
       </span>
