@@ -1,5 +1,4 @@
 import { Education } from "../data";
-import { convertWorkingTime } from "../utils";
 
 export default function EducationSection(props: Education) {
   return (
