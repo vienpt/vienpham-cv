@@ -15,7 +15,9 @@ export default function Nav({ onShowNav }: NavProps) {
       padding: '10px',
       border: '1px solid var(--blue-color)',
       borderRadius: '5px',
-      gap: '10px'
+      gap: '10px',
+      top: '45px',
+      left: '10px'
     }}
     >
       <a href="#summary" onClick={onShowNav}>Summary</a>
