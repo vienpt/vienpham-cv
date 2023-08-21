@@ -83,18 +83,17 @@ const data: Resume = {
   },
   about: [
     `Bachelor's degree in Computer Science`,
-    '5+ years of programming experience in front-end/full-stack engineering of web applications',
-    'Fluency in English',
-    'Proficiency with modern front-end technologies (Vue2/3, Nuxtjs, Tailwind CSS, Vuex/Pinia, HTML, CSS3, PostCSS)',
-    'Familiarity in unit test with Jest, e2e test (Cypress, Webdriverio), Git, JSON, Reactjs, Nextjs, GraphQL, TypeScript',
-    'Experience develop backend with Java SpringBoot and ASP.Net Core ',
-    'Practical knowledge of continuous integration and deployment (CI/CD) pipelines',
-    'Ability to work independently while still being collaborative and inclusive',
+    '5+ years of programming experience in front-end/full-stack with the following or similar technologies:',
+    'Frontend: Vue2/3, Nuxtjs, TailwindCss, Vuex/Pinia, Jest, E2E test (Cypress, Webdriverio).',
+    'Backend: Java (SpringBoot), C# (ASP.Net Core), Postgresql',
+    'Capability to refactor and enhance existing codebases.',
+    'Collaborative mindset to communicate with the team, from idea conception to implementation.',
+    'Strong habit of documenting and self-management ability.',
   ],
   experiences: [
     {
       id: '1',
-      position: 'Frontend Vuejs Developer',
+      position: 'Senior Frontend Developer (Vuejs)',
       company: 'Air360 / Scalefast',
       workingTime: {
         startDate: '2022-11-01T00:00:00.000Z', // November 2022
@@ -104,7 +103,7 @@ const data: Resume = {
       country: 'Vietnam',
       content: [
         'Collaborate closely with squad teams, including Product, Design, and QA members, to get requirements into functional and visually appealing frontend solutions.',
-        'Development with Vue 3, Nuxt composition API/Nuxt 3, GraphQL via Nuxt modules that interact with Cubejs, Chartjs, and TypeScript for building Dashboard web application and Chrome extension base on component-based architecture and start management pattern.',
+        'Development with Vue 3, Nuxt composition API/Nuxt 3, GraphQL that interact with Cubejs, Chartjs, and TypeScript for building Dashboard web application and Chrome extension.',
         'Participated in daily meeting scrums to update my team on my progress, challenges and goals. Attended planning sprint meetings every two weeks to review the completed tasks, prioritize the backlog and set the objectives for the next sprint.'
       ]
     },
