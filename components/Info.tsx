@@ -12,7 +12,7 @@ export default function CVInfo({ info }: Props) {
   return (
     <div className="cv-info">
       <h1>{info.name}</h1>
-      <h3>{info.title}</h3>
+      <h2>{info.title}</h2>
       <div className="cv-info__introduce">
         <address>
           <a href={`mailto:${info.email}`}>
