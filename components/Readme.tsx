@@ -19,7 +19,13 @@ export default function Readme() {
           margin: '2px',
         }}
       >
-        <button type="button" className="svg-octicon" style={{ backgroundColor: 'transparent', padding: '4px 4px 4px 4px'}}>
+        <button
+          type="button"
+          role="none"
+          aria-label="svg-readme"
+          className="svg-octicon"
+          style={{ backgroundColor: 'transparent', padding: '4px 4px 4px 4px'}}
+        >
           <svg
             aria-hidden="true"
             height="16"

@@ -15,7 +15,7 @@ export default function EducationSection(props: Education) {
       </span>
       <p>{`${props.title} at `}
         <a
-          style={{ color: 'var(--blue-color)' }}
+          style={{ color: 'blueviolet', textDecoration: 'underline' }}
           href={props.url} target="_blank"
         >
           {props.urlName}
