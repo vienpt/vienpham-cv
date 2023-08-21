@@ -10,7 +10,7 @@ export default function Readme() {
 
   return (
     <div className="cv-readme-hightlight">
-      <h5
+      <h4
         style={{
           display: 'flex',
           gap: '5px',
@@ -42,7 +42,7 @@ export default function Readme() {
         <a id="readme" href="#readme" style={{ textTransform: 'uppercase' }}>
           readme
         </a>
-      </h5>
+      </h4>
       { isShowNav && <Nav onShowNav={handleShowNav}></Nav> }
     </div>
   )
