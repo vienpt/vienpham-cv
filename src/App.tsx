@@ -11,9 +11,9 @@ import { useEffect, useRef, useState } from "react";
 
 function App() {
   const [reviewCookie] = useCookies(["is-review"]);
-  const [showFeedback, setShowFeedback] = useState<boolean>(false);
-  const [isReviewActive, setIsReviewActive] = useState<boolean>(false)
-  const [showMessage, setShowMessage] = useState<boolean>(false)
+  const [showFeedback, setShowFeedback] = useState(false);
+  const [isReviewActive, setIsReviewActive] = useState(false)
+  const [showMessage, setShowMessage] = useState(false)
 
   const appRef = useRef(null)
 
@@ -51,7 +51,7 @@ function App() {
       <CVInfo info={data.info}></CVInfo>
 
       <div className="cv-readme">
-        <Readme></Readme>
+        <Readme />
         <Summary summary={data.about}></Summary>
         <Journey
           experiences={data.experiences}
@@ -78,7 +78,7 @@ function App() {
       }
 
       {
-        showMessage && <Message></Message>
+        showMessage && <Message />
       }
     </div>
   );

@@ -96,8 +96,8 @@ const data: Resume = {
       position: 'Senior Frontend Developer (Vuejs)',
       company: 'Air360 / Scalefast',
       workingTime: {
-        startDate: '2022-11-01T00:00:00.000Z', // November 2022
-        endDate: '2023-05-30T00:00:00.000Z', // May 2023
+        startDate: '2022-11-01T00:00:00.000Z',
+        endDate: '2023-05-30T00:00:00.000Z',
       },
       city: 'Ho Chi Minh',
       country: 'Vietnam',
@@ -112,8 +112,8 @@ const data: Resume = {
       position: 'Software Engineer',
       company: 'ArchwayFactory / Archway',
       workingTime: {
-        startDate: '2016-04-01T00:00:00.000Z', // April 2016
-        endDate: '2022-10-30T00:00:00.000Z', // October 2022
+        startDate: '2016-04-01T00:00:00.000Z',
+        endDate: '2022-10-30T00:00:00.000Z',
       },
       city: 'Ho Chi Minh',
       country: 'Vietnam',
@@ -131,8 +131,8 @@ const data: Resume = {
       position: 'Developer',
       company: 'Intec-Vietnam',
       workingTime: {
-        startDate: '2013-10-01T00:00:00.000Z', // Otc 2013
-        endDate: '2015-10-01T00:00:00.000Z', // Otc 2015
+        startDate: '2013-10-01T00:00:00.000Z',
+        endDate: '2015-10-01T00:00:00.000Z',
       },
       city: 'Ho Chi Minh',
       country: 'Vietnam',
@@ -146,8 +146,8 @@ const data: Resume = {
     city: 'Ho Chi Minh',
     country: 'Vietnam',
     periodTime: {
-      startDate: '2009-08', // 2009
-      endDate: '2013', // 2013
+      startDate: '2009',
+      endDate: '2013',
     },
     title: 'Bachelor of Science in Information Technology',
     url: 'https://www.hcmus.edu.vn',

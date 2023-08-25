@@ -14,38 +14,40 @@ interface Props {
   updateIsReviewActive: (val: boolean) => void
 }
 
+
+// dum data
+const satisfies: Satisfied[] = [
+  {
+    id: 1,
+    score: -10,
+    img: './review/frowning_face.svg'
+  },
+  {
+    id: 2,
+    score: 10,
+    img: './review/frowning_face_mouth.svg'
+  },
+  {
+    id: 3,
+    score: 30,
+    img: './review/neutral_face.svg'
+  },
+  {
+    id: 4,
+    score: 50,
+    img: './review/smiling_face.svg'
+  },
+  {
+    id: 5,
+    score: 100,
+    img: './review/laugh_face.svg'
+  }
+]
+
+
 export default function Review({ isReviewActive, closeReview, updateIsReviewActive }: Props) {
   const reviewRef = useRef<null | HTMLDivElement>(null)
   const [, setReviewCookie]= useCookies(['is-review'])
-
-  // dum data
-  const satisfies: Satisfied[] = [
-    {
-      id: 1,
-      score: -10,
-      img: './review/frowning_face.svg'
-    },
-    {
-      id: 2,
-      score: 10,
-      img: './review/frowning_face_mouth.svg'
-    },
-    {
-      id: 3,
-      score: 30,
-      img: './review/neutral_face.svg'
-    },
-    {
-      id: 4,
-      score: 50,
-      img: './review/smiling_face.svg'
-    },
-    {
-      id: 5,
-      score: 100,
-      img: './review/laugh_face.svg'
-    }
-  ]
 
   // handle satisfied
   const handleSatisfied = async (score : number) => {
