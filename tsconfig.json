@@ -5,7 +5,10 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    "esModuleInterop": true, // netlify func
+    "esModuleInterop": true, // netlify func, and Nextjs
+    "plugins": [
+      { "name": "next" }
+    ], // update for Nextjs
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -13,7 +16,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve", // Update for Nexjs
+    "allowJs": true, // Update for Nextjs
+    "forceConsistentCasingInFileNames": true, // Update for Nextjs
+    "incremental": true, // Update for Nextjs
 
     /* Linting */
     "strict": true,
@@ -21,6 +27,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "exclude": ["./node_modules"],
+  "include": ["src", "./dist/types/**/*.ts", "./next-env.d.ts"], // update to use Nextjs
+//  "references": false, // ** update to use Nextjs. [{ "path": "./tsconfig.node.json" }]
 }
