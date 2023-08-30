@@ -11,11 +11,11 @@ export default function SkillSection({ languages, toolPlatforms, libFrameworks }
       ></SkillSectionItem>
       <SkillSectionItem
         title="libraries & frameworks"
-        content={toolPlatforms}
+        content={libFrameworks}
       ></SkillSectionItem>
       <SkillSectionItem
         title="tools & platforms"
-        content={libFrameworks}
+        content={toolPlatforms}
       ></SkillSectionItem>
     </div>
   )
