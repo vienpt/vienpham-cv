@@ -119,10 +119,10 @@ const data: Resume = {
       country: 'Vietnam',
       content: [
         'Collaborated with a small team (3-6 members) to develop outsource project with Agile, SCRUM.',
-        'R&D prototype and MVP projects using various technologies. Front-end using Vue.js(2), Nuxt, where back end is Java SpringBoot and .Net core REST webservice.',
+        'R&D prototype, PoC and MVP projects SPA application using various technologies. Front-end using Vue.js(2), Nuxt, where back end is SpringBoot, Asp.Net Core REST API, and serverless Functions (Azure Functions)',
         'Designed and developed User interface Web components using Vue, authenticate/authorization using OAuth2.0 workflow to apply signIn/out via third party app likes: Zoho CRM, Azure AD.',
-        'Designed and build Nuxt landing page. Hands on experience in websites and site generators using JAMStack architecture. Used frameworks such as VuePress, VitePress, Nuxt, and Jekyll, and deployed them to platforms such as Netlify and Vercel.',
-        'Worked on CI/CD pipeline tools like Github Actions, Azure Devops. Setting Docker, Helm, and Ingress files to deploy micro-services, static web site/application on Azure/GCP Cloud and monitoring applications by using Grafana, Prometheus, Kibana, Elasticsearch, Fluentd.',
+        'Designed and build Nuxt landing page. Hands on experience in websites and site generators using JAMStack architecture (SSG). Used frameworks such as VuePress, VitePress, Nuxt, and Jekyll, and deployed them to platforms such as Netlify and Vercel.',
+        'Experience with DevOps as well as use CI/CD pipeline tools like GitLab CI/CD, Github Actions, Azure DevOps. Setting Docker, Helm, and Ingress files to deploy K8s micro-services, static web site/application on Azure/GCP Cloud and monitoring applications by using Grafana, Prometheus, Kibana, Elasticsearch, Fluentd.',
         'Experience with JUnit, Cypress to implement unit test, integration test, and e2e test for web application.'
       ]
     },
