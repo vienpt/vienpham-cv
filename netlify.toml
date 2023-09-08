@@ -2,5 +2,6 @@
 path = "/supareview"
 function = "supareview"
 
-[[plugins]]
-package = "netlify-plugin-bundle-env"
+[[edge_functions]]
+path = "/getdata"
+function = "getdata"

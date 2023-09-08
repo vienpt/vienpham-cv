@@ -5,11 +5,15 @@ import CVInfo from "../components/Info.tsx";
 import Journey from "../components/Journey.tsx";
 import Message from "../components/Message.tsx";
 import Readme from "../components/Readme.tsx";
-import data from "../data.ts";
+import { Resume } from "../data.ts";
 import { useCookies } from "react-cookie";
 import { useEffect, useRef, useState } from "react";
 
 function App() {
+  const [data, setData] = useState<Resume>()
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
   const [reviewCookie] = useCookies(["is-review"]);
   const [showFeedback, setShowFeedback] = useState(false);
   const [isReviewActive, setIsReviewActive] = useState(false)
@@ -18,6 +22,23 @@ function App() {
   const appRef = useRef(null)
 
   useEffect(() => {
+
+    async function getData() {
+      const response = await fetch('/getdata')
+      const { data, error } = await response.json()
+
+      if (error === 'Error') {
+        setError(error);
+        throw new Error('Something happened')
+      }
+      setData(data)
+      setError(null)
+      setLoading(false)
+    }
+    if (!data) {
+      getData()
+    }
+
     if (
       !reviewCookie["is-review"] ||
       typeof reviewCookie["is-review"] === "undefined"
@@ -48,40 +69,55 @@ function App() {
 
   return (
     <div ref={appRef}>
-      <CVInfo info={data.info}></CVInfo>
+      {/*loading */}
+      {loading && <div>A moment please...</div>}
 
-      <div className="cv-readme">
-        <Readme />
-        <Summary summary={data.about}></Summary>
-        <Journey
-          experiences={data.experiences}
-          skill={data.skill}
-          education={data.education}
-          interest={data.interests}
-        ></Journey>
-      </div>
+      {/*error*/}
+      {error && (
+        <div>{`There is a problem fetching the data - ${error}`}</div>
+      )}
 
+      {/*success*/}
       {
-        showFeedback &&
-        <div className="cv-feedback" onClick={onShowFeedback}>
-          <img src="./feedback-button.png" alt="feedbacks" width="32px" height="108px" />
-        </div>
-      }
+        data && (
+          <div>
+            <CVInfo info={data.info}></CVInfo>
 
-      {
-        isReviewActive &&
-        <Review
-          isReviewActive={isReviewActive}
-          closeReview={closeReview}
-          updateIsReviewActive={(val) => showThanksMessage(val)}
-        />
-      }
+            <div className="cv-readme">
+              <Readme />
+              <Summary summary={data.about}></Summary>
+              <Journey
+                experiences={data.experiences}
+                skill={data.skill}
+                education={data.education}
+                interest={data.interests}
+              ></Journey>
+            </div>
 
-      {
-        showMessage && <Message />
+            {
+              showFeedback &&
+              <div className="cv-feedback" onClick={onShowFeedback}>
+                <img src="./feedback-button.png" alt="feedbacks" width="32px" height="108px" />
+              </div>
+            }
+
+            {
+              isReviewActive &&
+              <Review
+                isReviewActive={isReviewActive}
+                closeReview={closeReview}
+                updateIsReviewActive={(val) => showThanksMessage(val)}
+              />
+            }
+
+            {
+              showMessage && <Message />
+            }
+          </div>
+        )
       }
     </div>
-  );
+  )
 }
 
 export default App;

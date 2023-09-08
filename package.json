@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "func": "netlify dev inspect"
   },
   "dependencies": {
     "@netlify/functions": "^1.6.0",
@@ -15,7 +16,8 @@
     "netlify-plugin-bundle-env": "^0.2.2",
     "react": "^18.2.0",
     "react-cookie": "^4.1.1",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-loading-skeleton": "^3.3.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",
