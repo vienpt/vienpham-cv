@@ -29,6 +29,7 @@ function App() {
 
       if (error === 'Error') {
         setError(error);
+        setLoading(false)
         throw new Error('Something happened')
       }
       setData(data)
