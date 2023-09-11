@@ -5,9 +5,16 @@ import CVInfo from "../components/Info.tsx";
 import Journey from "../components/Journey.tsx";
 import Message from "../components/Message.tsx";
 import Readme from "../components/Readme.tsx";
+import Loading from "../components/Loading.tsx";
 import { Resume } from "../data.ts";
 import { useCookies } from "react-cookie";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState} from "react";
+
+/**
+ hack fetch before App initial. Need to fetch data as soon as possible
+ https://www.developerway.com/posts/how-to-fetch-data-in-react
+ */
+const resumeDataPromise = fetch('/getdata')
 
 function App() {
   const [data, setData] = useState<Resume>()
@@ -19,48 +26,63 @@ function App() {
   const [isReviewActive, setIsReviewActive] = useState(false)
   const [showMessage, setShowMessage] = useState(false)
 
-  const appRef = useRef(null)
-
   useEffect(() => {
-
-    async function getData() {
-      const response = await fetch('/getdata')
-      const { data, error } = await response.json()
-
-      if (error === 'Error') {
-        setError(error);
-        setLoading(false)
-        throw new Error('Something happened')
-      }
-      setData(data)
-      setError(null)
-      setLoading(false)
-    }
+    // check data already have
     if (!data) {
       getData()
     }
 
+    // check already have review or not with verify from cookie storage
     if (
       !reviewCookie["is-review"] ||
       typeof reviewCookie["is-review"] === "undefined"
     ) {
+
+      // show feedback after 5s
       setTimeout(() => {
         setShowFeedback(true);
       }, 5000);
     }
   }, [reviewCookie]);
 
-  function closeReview() {
+  /**
+   * fetch resume data netlify edge func
+   */
+  async function getData() : Promise<void> {
+    const response = await resumeDataPromise
+    const { data, error } = await response.clone().json()
+
+    if (error !== undefined) {
+      setError(error);
+      setLoading(false)
+      throw new Error('Something happened')
+    }
+    setData(data)
+    setError(null)
+    setLoading(false)
+  }
+
+  /**
+   * close feedback review
+   */
+  function closeReview() : void {
     setIsReviewActive(false);
     setShowFeedback(true);
   }
 
-  function onShowFeedback() {
+  /**
+   * show feedback
+   */
+  function onShowFeedback() : void {
     setIsReviewActive(true)
     setShowFeedback(false)
   }
 
-  function showThanksMessage(val: boolean) {
+  /**
+   * show thanks message after review
+   * @param val
+   */
+  function showThanksMessage(val: boolean) : void {
     setIsReviewActive(val)
     setShowMessage(true)
     setTimeout(() => {
@@ -69,19 +91,21 @@ function App() {
   }
 
   return (
-    <div ref={appRef}>
+    <>
       {/*loading */}
-      {loading && <div>A moment please...</div>}
+      {loading &&
+          // A moment please...
+          <Loading />
+      }
 
       {/*error*/}
       {error && (
         <div>{`There is a problem fetching the data - ${error}`}</div>
       )}
 
-      {/*success*/}
       {
         data && (
-          <div>
+          <>
             <CVInfo info={data.info}></CVInfo>
 
             <div className="cv-readme">
@@ -95,6 +119,7 @@ function App() {
               ></Journey>
             </div>
 
+            {/*show feedback btn*/}
             {
               showFeedback &&
               <div className="cv-feedback" onClick={onShowFeedback}>
@@ -102,6 +127,7 @@ function App() {
               </div>
             }
 
+            {/*check has already feedback*/}
             {
               isReviewActive &&
               <Review
@@ -111,13 +137,14 @@ function App() {
               />
             }
 
+            {/*show message when click feedback*/}
             {
               showMessage && <Message />
             }
-          </div>
+          </>
         )
       }
-    </div>
+    </>
   )
 }
 
