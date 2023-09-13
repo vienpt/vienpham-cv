@@ -206,8 +206,24 @@
 .cv-feedback {
   position: fixed;
   z-index: 999;
-  right: 0;
-  top: 80%;
-  margin-top: -54px;
+  bottom: 120px;
+  right: 4rem;
   cursor: pointer;
+  color: white;
+  width: 3rem;
+  height: 3rem;
+  background-color: #3d3d3d;
+  border-radius: 50%;
+}
+
+.cv-feedback-icon {
+  bottom: 8.3rem;
+  padding-top: 0.325rem;
+  position: fixed;
+  right: 4.83rem;
+  transition: all .11s;
+}
+
+figure {
+  border: 1px solid red;
 }

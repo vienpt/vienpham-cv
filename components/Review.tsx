@@ -1,15 +1,15 @@
 import "./Review.css"
-import { useRef } from "react";
+import {useEffect, useRef, useState} from "react";
 import {useCookies} from "react-cookie";
 
 interface Satisfied {
   id: number,
   score: number,
-  img: string
+  img: string,
+  comment?: string | ""
 }
 
 interface Props {
-  isReviewActive: boolean
   closeReview: () => void
   updateIsReviewActive: (val: boolean) => void
 }
@@ -19,39 +19,47 @@ interface Props {
 const satisfies: Satisfied[] = [
   {
     id: 1,
-    score: -10,
-    img: './review/frowning_face.svg'
+    score: 0,
+    img: './review/frowning-face',
+    comment: ''
   },
-  {
-    id: 2,
-    score: 10,
-    img: './review/frowning_face_mouth.svg'
-  },
+  // {
+  //   id: 2,
+  //   score: 10,
+  //   img: './review/frowning_face_mouth.svg'
+  // },
   {
     id: 3,
-    score: 30,
-    img: './review/neutral_face.svg'
+    score: 50,
+    img: './review/neutral-face',
+    comment: ''
   },
   {
     id: 4,
-    score: 50,
-    img: './review/smiling_face.svg'
-  },
-  {
-    id: 5,
     score: 100,
-    img: './review/laugh_face.svg'
-  }
+    img: './review/smiling-face',
+    comment: ''
+  },
+  // {
+  //   id: 5,
+  //   score: 100,
+  //   img: './review/laugh_face.svg'
+  // }
 ]
 
 
-export default function Review({ isReviewActive, closeReview, updateIsReviewActive }: Props) {
+export default function Review({ closeReview, updateIsReviewActive }: Props) {
   const reviewRef = useRef<null | HTMLDivElement>(null)
   const [, setReviewCookie]= useCookies(['is-review'])
+  const [activeItem, setActiveItem] = useState(0)
+  const [comment, setComment] = useState("")
 
-  // handle satisfied
-  const handleSatisfied = async (score : number) => {
-    const data = await fetch(`/supareview?score=${score}`)
+  useEffect(() => {
+    setActiveItem(() => satisfies[1].score)
+  }, []);
+
+  const handleSatisfied = async () => {
+    const data = await fetch(`/supareview?score=${activeItem}&comment=${comment}`)
     if (data.status === 200) {
       setReviewCookie('is-review', true)
     }
@@ -61,31 +69,94 @@ export default function Review({ isReviewActive, closeReview, updateIsReviewActi
 
   return (
     <div style={{ position: "relative" }}>
-      { isReviewActive && (
-        <div ref={reviewRef} className={'cv-review-popup'}>
-          <div className={'cv-review-popup__title'}>
-            <p>Overall, are you satisfied with this website?</p>
-            <button onClick={closeReview}>
-              <img src={'./review/close.svg'} alt="close-icon" />
-            </button>
+      <div ref={reviewRef} className={'cv-review-popup'}>
+        <p>Was this page helpful to you?</p>
+        <div style={{
+            marginTop: '-8px',
+            border: '0.5px solid rgb(253, 140, 1 , 1)'
+          }}
+        />
+
+        <div style={{ display: 'grid', padding: '10px 0' }}>
+          <span style={{ fontSize: '0.8em'}}>Rate your experience:</span>
+
+          <div style={{
+            display: 'flex',
+          }}>
+            {
+              satisfies.map(item =>
+                <button
+                  key={item.id}
+                  className={activeItem === item.score ? 'cv-review__icon-active-item' : 'cv-review__icon-item'}
+                  onClick={() => setActiveItem(item.score)}
+                  style={{
+                    display: 'block',
+                    marginBlockStart: '1em',
+                    marginBlockEnd: '1em',
+                    backgroundColor: '#393939',
+                    borderRadius: 0,
+                  }}
+                >
+                  <img
+                    style={{ padding: '10px' }}
+                    src={activeItem === item.score ? `${item.img}-focus.svg` : `${item.img}.svg`}
+                    alt="smile-icon"
+                  />
+                </button>
+              )
+            }
           </div>
           <div>
-            <div className={'cv-review-popup__icon'}>
-              {
-                satisfies.map((m) =>
-                  <button key={m.id} onClick={() => handleSatisfied(m.score)}>
-                    <img src={m.img} alt="smile-icon" />
-                  </button>)
-              }
-            </div>
-
-            <div style={{ display: 'flex', flex: '1 1 0%', justifyContent: 'space-between', padding: '5px 10px 0 5px'}}>
-              <span style={{ fontSize: '11px', textTransform: 'capitalize' }}>dissatisfaction</span>
-              <span style={{ fontSize: '11px' }}>Very satisfied</span>
-            </div>
+            <p style={{ fontSize: '0.8em'}}>Comment (optional):</p>
+            <textarea
+              rows={5}
+              style={{
+                minWidth: '270px',
+                backgroundColor: '#393939',
+                color: 'var(--white-color)',
+                padding: '10px'
+              }}
+              onInput={() => setComment(event.target?.value)}
+            />
           </div>
+
+
         </div>
-      )}
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: '-10px'
+        }}>
+          <button style={{
+            display: 'block',
+            marginBlockStart: '1em',
+            marginBlockEnd: '1em',
+            backgroundColor: '#393939',
+            borderRadius: 0,
+            height: '100%',
+            width: '100%',
+            color: 'var(--white-color)'
+          }}
+                  onClick={closeReview}
+          >
+            Cancel</button>
+          <button style={{
+            display: 'block',
+            marginBlockStart: '1em',
+            marginBlockEnd: '1em',
+            backgroundColor: 'var(--blue-color)',
+            borderRadius: 0,
+            height: '100%',
+            width: '100%',
+            color: 'var(--white-color)'
+          }}
+                  onClick={() => handleSatisfied()}
+          >
+            Submit
+          </button>
+        </div>
+      </div>
     </div>
   )
 }

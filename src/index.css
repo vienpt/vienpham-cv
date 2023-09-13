@@ -69,7 +69,7 @@ address > a {
 
 
 button {
-  border-radius: 8px;
+  /*border-radius: 8px;*/
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
@@ -123,5 +123,13 @@ button:focus-visible {
 @media (max-width: 760px) {
   h1 {
     font-size: 2.8em;
+  }
+
+  .cv-feedback, .cv-review-popup {
+    right: 2rem;
+  }
+
+  .cv-feedback-icon {
+    right: 2.83rem;
   }
 }

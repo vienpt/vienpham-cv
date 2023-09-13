@@ -17,6 +17,7 @@ export default async (request: Request, { cookies, geo, json}: Context) => {
         [
           {
             score: score,
+            comment: url.searchParams.get('comment'),
             geo: JSON.stringify(geo)
           }
         ]
