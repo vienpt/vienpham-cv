@@ -116,7 +116,7 @@ export default function Review({ closeReview, updateIsReviewActive }: Props) {
                 color: 'var(--white-color)',
                 padding: '10px'
               }}
-              onInput={() => setComment(event.target?.value)}
+              onChange={e => setComment(e.target.value)}
             />
           </div>
 
