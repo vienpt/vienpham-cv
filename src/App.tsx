@@ -19,7 +19,7 @@ const resumeDataPromise = fetch('/getdata')
 function App() {
   const [data, setData] = useState<Resume>()
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [error, setError] = useState<Error | undefined>()
 
   const [reviewCookie] = useCookies(["is-review"]);
   const [showFeedback, setShowFeedback] = useState(false);
@@ -58,7 +58,7 @@ function App() {
       setLoading(false)
     } catch(error) {
       if (error !== undefined) {
-        setError(error);
+        setError(error as Error);
         throw new Error("Failed in some way")
       }
     } finally {
