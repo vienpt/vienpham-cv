@@ -1,3 +1,4 @@
+// @ts-ignore
 import { createClient } from 'https://esm.sh/@supabase/supabase-js';
 
 const supabaseUrl = Deno.env.get("SUPABASE_URL")
@@ -15,8 +16,9 @@ export default async () => {
   `)
 
   if (error) {
-    return Response.json({ error: 'Error', status: 500 })
+    const err = Response.json("Whoops!", { statusCode: 500 });
+    throw new Error(err)
   }
 
-  return Response.json({ data: data[0], status: 200 });
+  return Response.json({ resume: data[0] });
 }

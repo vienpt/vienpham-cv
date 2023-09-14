@@ -1,75 +1,40 @@
 import "./Review.css"
-import {useEffect, useRef, useState} from "react";
+import {useState} from "react";
 import {useCookies} from "react-cookie";
-
-interface Satisfied {
-  id: number,
-  score: number,
-  img: string,
-  comment?: string | ""
-}
+import Button from "./Button.tsx";
+import {satisfies} from "../data.ts";
 
 interface Props {
   closeReview: () => void
   updateIsReviewActive: (val: boolean) => void
 }
 
-
-// dum data
-const satisfies: Satisfied[] = [
-  {
-    id: 1,
-    score: 0,
-    img: './review/frowning-face',
-    comment: ''
-  },
-  // {
-  //   id: 2,
-  //   score: 10,
-  //   img: './review/frowning_face_mouth.svg'
-  // },
-  {
-    id: 3,
-    score: 50,
-    img: './review/neutral-face',
-    comment: ''
-  },
-  {
-    id: 4,
-    score: 100,
-    img: './review/smiling-face',
-    comment: ''
-  },
-  // {
-  //   id: 5,
-  //   score: 100,
-  //   img: './review/laugh_face.svg'
-  // }
-]
-
-
 export default function Review({ closeReview, updateIsReviewActive }: Props) {
-  const reviewRef = useRef<null | HTMLDivElement>(null)
   const [, setReviewCookie]= useCookies(['is-review'])
-  const [activeItem, setActiveItem] = useState(0)
+  const [activeItem, setActiveItem] = useState(satisfies[1].score)
   const [comment, setComment] = useState("")
+  const [loading, setLoading] = useState(false)
 
-  useEffect(() => {
-    setActiveItem(() => satisfies[1].score)
-  }, []);
-
+  /**
+   * insert review feedback
+   */
   const handleSatisfied = async () => {
-    const data = await fetch(`/supareview?score=${activeItem}&comment=${comment}`)
-    if (data.status === 200) {
+    try {
+      setLoading(true)
+      await fetch(`/supareview?score=${activeItem}&comment=${comment}`)
       setReviewCookie('is-review', true)
+      updateIsReviewActive(true)
+    } catch (err) {
+      updateIsReviewActive(false)
+      throw new Error(`Something happen ${err}`)
+    } finally {
+      setLoading(false)
     }
-
-    updateIsReviewActive(false)
   }
 
   return (
     <div style={{ position: "relative" }}>
-      <div ref={reviewRef} className={'cv-review-popup'}>
+      <div className={'cv-review-popup'}>
         <p>Was this page helpful to you?</p>
         <div style={{
             marginTop: '-8px',
@@ -119,42 +84,25 @@ export default function Review({ closeReview, updateIsReviewActive }: Props) {
               onChange={e => setComment(e.target.value)}
             />
           </div>
-
-
         </div>
+
         <div style={{
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           marginTop: '-10px'
         }}>
-          <button style={{
-            display: 'block',
-            marginBlockStart: '1em',
-            marginBlockEnd: '1em',
-            backgroundColor: '#393939',
-            borderRadius: 0,
-            height: '100%',
-            width: '100%',
-            color: 'var(--white-color)'
-          }}
-                  onClick={closeReview}
-          >
-            Cancel</button>
-          <button style={{
-            display: 'block',
-            marginBlockStart: '1em',
-            marginBlockEnd: '1em',
-            backgroundColor: 'var(--blue-color)',
-            borderRadius: 0,
-            height: '100%',
-            width: '100%',
-            color: 'var(--white-color)'
-          }}
-                  onClick={() => handleSatisfied()}
-          >
-            Submit
-          </button>
+          <Button
+            click={closeReview}
+            text={'Cancel'}
+            bgColor={'#393939'}
+          />
+          <Button
+            click={handleSatisfied}
+            text={'Submit'}
+            bgColor={'var(--blue-color)'}
+            isSubmit={loading}
+          />
         </div>
       </div>
     </div>

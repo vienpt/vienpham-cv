@@ -53,3 +53,31 @@ export interface Skill {
   libFrameworks: string[]
   toolPlatforms: string[]
 }
+
+export interface Satisfied {
+  id: number,
+  score: number,
+  img: string,
+  comment?: string | ""
+}
+
+export const satisfies: Satisfied[] = [
+  {
+    id: 1,
+    score: 0,
+    img: './review/frowning-face',
+    comment: ''
+  },
+  {
+    id: 3,
+    score: 50,
+    img: './review/neutral-face',
+    comment: ''
+  },
+  {
+    id: 4,
+    score: 100,
+    img: './review/smiling-face',
+    comment: ''
+  },
+]

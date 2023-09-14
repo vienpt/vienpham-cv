@@ -26,10 +26,12 @@ function App() {
   const [isReviewActive, setIsReviewActive] = useState(false)
   const [showMessage, setShowMessage] = useState(false)
 
+  const [isSuccessMessage, setIsSuccessMessage] = useState(false)
+
   useEffect(() => {
     // check data already have
     if (!data) {
-      getData()
+      getData().then()
     }
 
     // check already have review or not with verify from cookie storage
@@ -49,17 +51,19 @@ function App() {
    * fetch resume data netlify edge func
    */
   async function getData() : Promise<void> {
-    const response = await resumeDataPromise
-    const { data, error } = await response.clone().json()
-
-    if (error !== undefined) {
-      setError(error);
+    try {
+      const response = await resumeDataPromise
+      const { resume } = await response.clone().json()
+      setData(resume)
       setLoading(false)
-      throw new Error('Something happened')
+    } catch(error) {
+      if (error !== undefined) {
+        setError(error);
+        throw new Error("Failed in some way")
+      }
+    } finally {
+      setLoading(false)
     }
-    setData(data)
-    setError(null)
-    setLoading(false)
   }
 
   /**
@@ -75,33 +79,37 @@ function App() {
    */
   function onShowFeedback() : void {
     setIsReviewActive(() => !isReviewActive)
-    // setShowFeedback(false)
   }
 
   /**
-   * show thanks message after review
-   * @param val
+   * show thanks message/error after review
    */
-  function showThanksMessage(val: boolean) : void {
-    setIsReviewActive(val)
-    setShowFeedback(false)
+  function showSubmitMessage(val: boolean) : void {
     setShowMessage(true)
+
+    if (!val) {
+      setIsSuccessMessage(false)
+    } else {
+      setIsSuccessMessage(true)
+      setIsReviewActive(!isReviewActive)
+      setShowFeedback(false)
+    }
+
     setTimeout(() => {
       setShowMessage(false)
     }, 3000)
   }
 
+
   return (
     <>
-      {/*loading */}
-      {loading &&
-          // A moment please...
-          <Loading />
-      }
+      {loading && <Loading />}
 
-      {/*error*/}
       {error && (
-        <div>{`There is a problem fetching the data - ${error}`}</div>
+        <div>
+          Sorry. There is a problem when fetching the data. Please visit later.
+          <pre><b>Error</b>: {`${error}`}</pre>
+        </div>
       )}
 
       {
@@ -133,13 +141,13 @@ function App() {
               isReviewActive &&
               <Review
                 closeReview={closeReview}
-                updateIsReviewActive={(val) => showThanksMessage(val)}
+                updateIsReviewActive={(val) => showSubmitMessage(val)}
               />
             }
 
             {/*show message when click feedback*/}
             {
-              showMessage && <Message />
+              showMessage && <Message isSuccess={isSuccessMessage} />
             }
           </>
         )
