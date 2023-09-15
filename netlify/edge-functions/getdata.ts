@@ -20,5 +20,17 @@ export default async () => {
     throw new Error(err)
   }
 
-  return Response.json({ resume: data[0] });
+  return Response.json({ resume: data[0] }, {
+    /**
+     * https://developer.mozilla.org/en-US/docs/Web/API/Response/json_static
+     */
+    status: 200,
+    statusText: 'Ok',
+    headers: {
+      /**
+       * https://docs.netlify.com/edge-functions/optional-configuration/
+       */
+      'cache-control': 'public, s-maxage=3600'
+    }
+  });
 }
