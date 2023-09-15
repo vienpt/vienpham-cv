@@ -20,6 +20,10 @@
   --gray-color: #5f5f5f;
 }
 
+input {
+  font-size: 16px;
+}
+
 a {
   font-weight: 500;
   color: rgba(189, 185, 185, 0.67);
