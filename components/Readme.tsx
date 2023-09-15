@@ -21,7 +21,6 @@ export default function Readme() {
       >
         <button
           type="button"
-          role="none"
           aria-label="svg-readme"
           className="svg-octicon"
           style={{ backgroundColor: 'transparent', padding: '4px 4px 4px 4px'}}
