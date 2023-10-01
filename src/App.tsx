@@ -6,6 +6,7 @@ import Journey from "../components/Journey.tsx";
 import Message from "../components/Message.tsx";
 import Readme from "../components/Readme.tsx";
 import Loading from "../components/Loading.tsx";
+import Confetti from "../components/Confetti.jsx";
 import { Resume } from "../data.ts";
 import { useCookies } from "react-cookie";
 import { useEffect, useState} from "react";
@@ -27,6 +28,8 @@ function App() {
   const [showMessage, setShowMessage] = useState(false)
 
   const [isSuccessMessage, setIsSuccessMessage] = useState(false)
+  const isShowConfetti = !loading && !error
+
 
   useEffect(() => {
     // check data already have
@@ -115,8 +118,10 @@ function App() {
       {
         data && (
           <>
-            <CVInfo info={data.info}></CVInfo>
+            {/* accept by promise */}
+            <Confetti isShowConfetti={isShowConfetti} promise={resumeDataPromise} />
 
+            <CVInfo info={data.info}></CVInfo>
             <div className="cv-readme">
               <Readme />
               <Summary summary={data.about}></Summary>
@@ -127,7 +132,6 @@ function App() {
                 interest={data.interests}
               ></Journey>
             </div>
-
             {/*show feedback btn*/}
             {
               showFeedback &&
