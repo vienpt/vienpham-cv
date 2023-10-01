@@ -1,108 +1,84 @@
+/*@import 'open-props/open-props.min.css';*/
+/*@import 'open-props/colors.min.css';*/
+@import 'open-props/normalize.min.css';
+@import 'open-props/gray-hsl.min.css';
+
+html {
+  /*light*/
+  --primary-light: var(--orange-8);
+  --blue-text-light: var(--blue-7);
+  --blue-bg-light: var(--blue-1);
+  --text-1-light: var(--gray-8);
+  --text-2-light: var(--gray-7);
+  --surface-1-light: var(--gray-1);
+  --surface-2-light: var(--gray-2);
+  --surface-shadow-light: var(--gray-8-hsl);
+  --shadow-strength-light: 2%;
+
+  --gradient-1-light: var(--gradient-23);
+
+  /*dark*/
+  --primary-dark: var(--orange-4);
+  --blue-text-dark: var(--blue-3);
+  --blue-bg-dark: var(--blue-12);
+  --text-1-dark: var(--gray-3);
+  --text-2-dark: var(--gray-5);
+  --surface-1-dark: var(--gray-12);
+  --surface-2-dark: var(--gray-11);
+  --surface-shadow-dark: var(--gray-12-hsl);
+  --shadow-strength-dark: 80%;
+
+  --gradient-green-dark: var(--gradient-4);
+
+
+  /*common*/
+  --global-margin: 16px;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
+  line-height: 1.5;
   text-rendering: optimizeLegibility;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  /*define variables*/
-  --white-color: #fff;
-  --primary-color: #fedd00;
-  --blue-color: #2d9cdb;
-  --gray-color: #5f5f5f;
+  color-scheme: light;
+
+  /* set defaults */
+  --primary: var(--primary-light);
+  --blue-text: var(--blue-text-light);
+  --blue-bg: var(--blue-bg-light);
+  --text-1: var(--text-1-light);
+  --text-2: var(--text-2-light);
+  --surface-1: var(--surface-1-light);
+  --surface-2: var(--surface-2-light);
+  --surface-shadow: var(--surface-shadow-light);
+  --shadow-strength: var(--shadow-strength-light);
+
+  --gradient-text-1: var(--gradient-1-light);
+
 }
 
-a {
-  font-weight: 500;
-  color: rgba(189, 185, 185, 0.67);
-  padding-left: 4px;
-  padding-right: 4px;
-  border-radius: 10px;
-  text-decoration: inherit;
-}
-.cv-info a:hover {
-  color: black;
-  background-color: var(--primary-color);
-}
-
-body {
-  margin: 0;
-  display: flex;
-  /*place-items: start;*/
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-  margin: 2px 0 2px 0;
-}
-
-h2, h3 {
-  /*margin: -2px 0 -2px 0;*/
-}
-
-h2 > a {
-  padding: 0;
-  color: var(--blue-color);
-}
-h2 > a:hover {
-  color: var(--blue-color);
-}
-
-h3 > a {
-  padding: 0;
-}
-
-address > a {
-  padding: 0;
-}
-
-
-button {
-  /*border-radius: 8px;*/
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-
-button:focus,
-button:focus-visible {
-  /*outline: 4px auto -webkit-focus-ring-color;*/
-}
-
-#cv-mail,
-#cv-phone {
-  fill: var(--white-color);
-}
-
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a {
-    color: rgb(67, 66, 66);
-  }
-  a:hover {
-    color: black;
-  }
-  button {
-    background-color: #f9f9f9;
+    color-scheme: dark;
+
+    /* set defaults */
+    --primary: var(--primary-dark);
+    --blue-text: var(--blue-text-dark);
+    --blue-bg: var(--blue-bg-dark);
+    --text-1: var(--text-1-dark);
+    --text-2: var(--text-2-dark);
+    --surface-1: var(--surface-1-dark);
+    --surface-2: var(--surface-2-dark);
+    --surface-shadow: var(--surface-shadow-dark);
+    --shadow-strength: var(--shadow-strength-dark);
+
+    --gradient-text-1: var(--gradient-green-dark);
   }
 
   #cv-mail,
@@ -121,10 +97,6 @@ button:focus-visible {
 }
 
 @media (max-width: 760px) {
-  h1 {
-    font-size: 2.8em;
-  }
-
   .cv-feedback, .cv-review-popup {
     right: 2rem;
   }
