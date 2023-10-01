@@ -4,7 +4,10 @@
 
 TechStacks:
 
-- Create react app
+- Vite (babel, postcss)
+- React@18
+- Style components
+- Open props
 - Netlify edge functions
 - Supabase database
 
