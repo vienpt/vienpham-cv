@@ -1,32 +1,70 @@
 import {Info, Social} from "../data";
-import {Fragment} from "react";
 import SocialItem from "./Social.tsx";
+import styled from 'styled-components';
 
-// https://davidwalsh.name/destructuring-alias
-// https://stackoverflow.com/questions/69438138/typescript-array-of-objects-as-props
 interface Props {
   info: Info
 }
 
+const StyleH1 = styled.h1`
+  color: var(--primary);
+`
+const StyleH3 = styled.h3`
+  background: var(--gradient-text-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`
+
+const StyleInfo = styled.section`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 45px;
+`
+
+const StyleInfoIntroduce = styled.div`
+  display: inline-flex;
+  align-items: center;
+  gap: 4rem;
+  padding-top: 10px;
+  
+  a {
+    display: flex;
+    align-items: center;
+    color: var(--text-1);
+    
+    &:hover {
+      color: var(--blue-text);
+      background-color: var(--blue-bg);
+    }
+    &:visited {
+      background-color: var(--blue-bg);
+    }
+  }
+
+  @media only screen and (max-width: 760px) {
+    flex-flow: wrap;
+    gap: 8px;
+    
+    a {
+      margin-right: 1rem;
+    }
+  }
+`
+
+
 export default function CVInfo({ info }: Props) {
   return (
-    <div className="cv-info">
-      <h1>{info.name}</h1>
-      <span style={{ fontSize: '24px', fontWeight: 'bold' }}>
-        {info.title}
-      </span>
-      <div className="cv-info__introduce">
-        <address>
-          <a href={`mailto:${info.email}`}>
-            <span>{info.email}</span>
-          </a>
-        </address>
-        <address>
-          <a href={`tel:${info.phone}`}>
-            <span>{info.phone}</span>
-          </a>
-        </address>
-        <Fragment>
+    <StyleInfo className="cv-info">
+      <StyleH1>{info.name}</StyleH1>
+      <StyleH3>{info.title}</StyleH3>
+      <StyleInfoIntroduce>
+        <a href={`mailto:${info.email}`}>
+          <span>{info.email}</span>
+        </a>
+        <a href={`tel:${info.phone}`}>
+          <span>{info.phone}</span>
+        </a>
+        <>
           {
             info.socials?.map((social: Social) =>
               <SocialItem
@@ -38,8 +76,8 @@ export default function CVInfo({ info }: Props) {
               />
             )
           }
-        </Fragment>
-      </div>
-    </div>
+        </>
+      </StyleInfoIntroduce>
+    </StyleInfo>
   )
 }
