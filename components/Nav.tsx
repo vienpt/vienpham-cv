@@ -1,6 +1,6 @@
 
 interface NavProps {
-  onShowNav: () => void;
+  onShowNav: (e: never) => void;
 }
 
 export default function Nav({ onShowNav }: NavProps) {
