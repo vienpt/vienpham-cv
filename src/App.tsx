@@ -119,25 +119,25 @@ function App() {
         data && (
           <>
             {/* accept by promise */}
-            <Confetti isShowConfetti={isShowConfetti} promise={resumeDataPromise} />
+            <Confetti isShowConfetti={isShowConfetti} promise={resumeDataPromise}>
+              <Header info={data.info}></Header>
+              <section id="readme" className="cv-readme">
+                <Readme />
+                <div className="content">
+                  <article>
+                    <Summary summary={data.about}></Summary>
+                    <Journey
+                      experiences={data.experiences}
+                      skill={data.skill}
+                      education={data.education}
+                      interest={data.interests}
+                    ></Journey>
+                  </article>
+                </div>
+              </section>
+            </Confetti>
 
-            <Header info={data.info}></Header>
-            <section id="readme" className="cv-readme">
-              <Readme />
-              <div className="content">
-                <article>
-                  <Summary summary={data.about}></Summary>
-                  <Journey
-                    experiences={data.experiences}
-                    skill={data.skill}
-                    education={data.education}
-                    interest={data.interests}
-                  ></Journey>
-                </article>
 
-              </div>
-
-            </section>
             {/*show feedback btn*/}
             {
               showFeedback &&
