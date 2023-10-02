@@ -2,15 +2,13 @@ import { Education, Experience, Skill } from "../data.ts";
 import RelevantExperience from "./RelevantExperience.tsx";
 import SkillSection from "./SkillSection.tsx";
 import EducationSection from "./EducationSection.tsx";
-import InterestSection from "./InterestSection.tsx";
-import { splitStringTagItem } from "../utils";
 import styled from 'styled-components';
 
 interface Props {
   experiences: Experience[]
   skill: Skill
   education: Education
-  interest: string[]
+  interest?: string[]
 }
 
 const StyleJourney = styled.section`
@@ -36,7 +34,7 @@ const StyleJourneyOther = styled.section`
   gap: 20px;
 `
 
-export default function Journey({ experiences, skill, education, interest }: Props) {
+export default function Journey({ experiences, skill, education }: Props) {
   return (
     <StyleJourney id="journey">
       <StyleJourneyExperiences id="experiences">
@@ -65,9 +63,9 @@ export default function Journey({ experiences, skill, education, interest }: Pro
         <EducationSection
           {...education}
         />
-        <InterestSection>
-          {splitStringTagItem(interest)}
-        </InterestSection>
+        {/*<InterestSection>*/}
+        {/*  {splitStringTagItem(interest)}*/}
+        {/*</InterestSection>*/}
       </StyleJourneyOther>
     </StyleJourney>
   )

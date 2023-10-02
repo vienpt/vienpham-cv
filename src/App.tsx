@@ -6,7 +6,6 @@ import Journey from "../components/Journey.tsx";
 import Message from "../components/Message.tsx";
 import Readme from "../components/Readme.tsx";
 import Loading from "../components/Loading.tsx";
-import Confetti from "../components/Confetti.jsx";
 import { Resume } from "../data.ts";
 import { useCookies } from "react-cookie";
 import { useEffect, useState} from "react";
@@ -28,7 +27,6 @@ function App() {
   const [showMessage, setShowMessage] = useState(false)
 
   const [isSuccessMessage, setIsSuccessMessage] = useState(false)
-  const isShowConfetti = !loading && !error
 
 
   useEffect(() => {
@@ -119,23 +117,20 @@ function App() {
         data && (
           <>
             {/* accept by promise */}
-            <Confetti isShowConfetti={isShowConfetti} promise={resumeDataPromise}>
-              <Header info={data.info}></Header>
-              <section id="readme" className="cv-readme">
-                <Readme />
-                <div className="content">
-                  <article>
-                    <Summary summary={data.about}></Summary>
-                    <Journey
-                      experiences={data.experiences}
-                      skill={data.skill}
-                      education={data.education}
-                      interest={data.interests}
-                    ></Journey>
-                  </article>
-                </div>
-              </section>
-            </Confetti>
+            <Header info={data.info}></Header>
+            <section id="readme" className="cv-readme">
+              <Readme />
+              <div className="content">
+                <article>
+                  <Summary summary={data.about}></Summary>
+                  <Journey
+                    experiences={data.experiences}
+                    skill={data.skill}
+                    education={data.education}
+                  ></Journey>
+                </article>
+              </div>
+            </section>
 
 
             {/*show feedback btn*/}
