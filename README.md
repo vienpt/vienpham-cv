@@ -8,6 +8,7 @@ TechStacks:
 - React@18
 - Style components
 - Open props
+- Lazy loading
 - Netlify edge functions
 - Supabase database
 
