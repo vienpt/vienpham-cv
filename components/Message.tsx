@@ -1,35 +1,37 @@
 import './Review.css'
+import styled from 'styled-components'
+
+const StyleMessage = styled.div<{ $bgColor?: string }>`
+  display: inline-flex;
+  position: fixed;
+  right: 3rem;
+  bottom: 1em;
+  background-color: ${props => props.$bgColor}; 
+  width: 350px;
+  border-radius: var(--border-radius);
+  padding: 10px;
+`
+
+const StyleMessImg = styled.img`
+  width: 28px;
+  height: 28px;
+  vertical-align: middle;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  box-shadow: var(--shadow-strength);
+`
 
 export default function Message({ isSuccess }: { isSuccess: boolean }) {
-  const bgColor = isSuccess ? 'green' : 'red'
+  const bgColor = isSuccess ? 'var(--green-7)' : 'var(--red-6)'
   return (
-    <div
-      style={{
-        position: 'fixed',
-        right: '3rem',
-        bottom: '1em',
-        backgroundColor: bgColor,
-        width: '215px',
-        padding: '10px'
-      }}
-    >
+    <StyleMessage $bgColor={bgColor}>
       {
         isSuccess
-          ? <span>Thank you for your feedback. I love it.</span>
-          : <span>Something happen. Please take review later or contact to me via email.</span>
+          ? <p>Thank you for your feedback. I love it.</p>
+          : <h6>Something happen. Please take review later or contact to me via email.</h6>
       }
 
-      <img
-        style={{
-          width: '28px',
-          height: '28px',
-          verticalAlign: 'middle',
-          marginBottom: '5px',
-          marginLeft: '5px'
-        }}
-        src={'./cat.svg'}
-        alt="cat-icon"
-      />
-    </div>
+      <StyleMessImg src={'./cat.svg'} alt="cat-icon" />
+    </StyleMessage>
   )
 }
