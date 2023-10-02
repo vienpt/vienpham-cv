@@ -1,7 +1,7 @@
 import "./App.css";
 import Review from "../components/Review.tsx";
 import Summary from "../components/Summary.tsx";
-import CVInfo from "../components/Info.tsx";
+import Header from "../components/Info.tsx";
 import Journey from "../components/Journey.tsx";
 import Message from "../components/Message.tsx";
 import Readme from "../components/Readme.tsx";
@@ -121,17 +121,23 @@ function App() {
             {/* accept by promise */}
             <Confetti isShowConfetti={isShowConfetti} promise={resumeDataPromise} />
 
-            <CVInfo info={data.info}></CVInfo>
-            <div className="cv-readme">
+            <Header info={data.info}></Header>
+            <section id="readme" className="cv-readme">
               <Readme />
-              <Summary summary={data.about}></Summary>
-              <Journey
-                experiences={data.experiences}
-                skill={data.skill}
-                education={data.education}
-                interest={data.interests}
-              ></Journey>
-            </div>
+              <div className="content">
+                <article>
+                  <Summary summary={data.about}></Summary>
+                  <Journey
+                    experiences={data.experiences}
+                    skill={data.skill}
+                    education={data.education}
+                    interest={data.interests}
+                  ></Journey>
+                </article>
+
+              </div>
+
+            </section>
             {/*show feedback btn*/}
             {
               showFeedback &&

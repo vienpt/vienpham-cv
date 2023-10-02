@@ -9,9 +9,9 @@ interface SectionItem {
 export default function SkillSectionItem({ title, content }: SectionItem) {
   return (
     <>
-      <span className="cv-journey__skill-edu-interest-title">
+      <h5>
         {title}
-      </span>
+      </h5>
       <StringTagItem>
         {splitStringTagItem(content)}
       </StringTagItem>

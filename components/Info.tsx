@@ -19,6 +19,10 @@ const StyleInfo = styled.section`
   display: flex;
   flex-direction: column;
   margin-bottom: 45px;
+  
+  @media only screen and (max-width: 760px) {
+    margin: 16px;
+  }
 `
 
 const StyleInfoIntroduce = styled.div`
@@ -54,7 +58,7 @@ const StyleInfoIntroduce = styled.div`
 
 export default function CVInfo({ info }: Props) {
   return (
-    <StyleInfo className="cv-info">
+    <StyleInfo>
       <StyleH1>{info.name}</StyleH1>
       <StyleH3>{info.title}</StyleH3>
       <StyleInfoIntroduce>

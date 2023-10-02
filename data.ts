@@ -81,3 +81,14 @@ export const satisfies: Satisfied[] = [
     comment: ''
   },
 ]
+
+
+export type NavItem = string[]
+
+export const NavItems : NavItem = [
+  "summary",
+  "experiences",
+  "skills",
+  "education",
+  "interests"
+]

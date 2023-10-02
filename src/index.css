@@ -1,4 +1,4 @@
-/*@import 'open-props/open-props.min.css';*/
+@import 'open-props/open-props.min.css';
 /*@import 'open-props/colors.min.css';*/
 @import 'open-props/normalize.min.css';
 @import 'open-props/gray-hsl.min.css';
@@ -16,6 +16,7 @@ html {
   --shadow-strength-light: 2%;
 
   --gradient-1-light: var(--gradient-23);
+  --svg-hover-light: var(--gray-3);
 
   /*dark*/
   --primary-dark: var(--orange-4);
@@ -29,10 +30,12 @@ html {
   --shadow-strength-dark: 80%;
 
   --gradient-green-dark: var(--gradient-4);
+  --svg-hover-dark: var(--gray-8);
 
 
   /*common*/
   --global-margin: 16px;
+  --border-radius: var(--radius-2);
 }
 
 :root {
@@ -41,6 +44,7 @@ html {
   font-synthesis: none;
   line-height: 1.5;
   text-rendering: optimizeLegibility;
+  color: var(--text-1);
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -60,6 +64,7 @@ html {
   --shadow-strength: var(--shadow-strength-light);
 
   --gradient-text-1: var(--gradient-1-light);
+  --svg-hover: var(--svg-hover-light)
 
 }
 
@@ -79,20 +84,7 @@ html {
     --shadow-strength: var(--shadow-strength-dark);
 
     --gradient-text-1: var(--gradient-green-dark);
-  }
-
-  #cv-mail,
-  #cv-phone,
-  #readme {
-    color: #1a1a1a !important;
-  }
-
-  .cv-readme {
-    border: 1px solid #d9d9d9 !important;
-  }
-  .cv-readme-hightlight {
-    border-bottom: 1px solid #d9d9d9 !important;
-    background-color: white !important;
+    --svg-hover: var(--svg-hover-dark)
   }
 }
 

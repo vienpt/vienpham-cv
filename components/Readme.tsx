@@ -1,83 +1,147 @@
-import {useState} from "react";
-import OutsideClickHandler from 'react-outside-click-handler';
+import { useState } from 'react'
+import { NavItems } from "../data.ts";
+import OutsideClickHandler from 'react-outside-click-handler'
+import styled from 'styled-components'
+
+const StyleReadme = styled.div`
+  display: flex;
+  padding: 8px 10px;
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+  border-bottom: 1px solid;
+  border-color: var(--gray-6);
+  position: sticky;
+  top: 0;
+  background-color: var(--surface-2);
+  
+`
+
+const StyleTitleNav = styled.div`
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  
+  h6 > a {
+    color: var(--text-2);
+    text-transform: uppercase;
+  }
+  
+  button {
+    background-color: transparent;
+    border-radius: var(--border-radius);
+    
+    &:hover, &:focus {
+      background-color: var(--svg-hover) !important;
+    }
+
+    svg {
+      fill: var(--text-2);
+    }
+  }
+`
 
 export default function Readme() {
   const [isShowNav, setIsShowNav] = useState(false)
 
   return (
 
-      <div className="cv-readme-hightlight">
-        <OutsideClickHandler  onOutsideClick={() => {
+      <StyleReadme>
+        <OutsideClickHandler onOutsideClick={() => {
           setIsShowNav(false)
         }}>
-          <h4
-            style={{
-                     display: 'flex',
-                     gap: '5px',
-                     justifyContent: 'start',
-                     alignItems: 'center',
-                     margin: '2px',
-                     }}
-          >
+          <StyleTitleNav>
             <button
-            type="button"
-            aria-label="svg-readme"
-            className="svg-octicon"
-            style={{ backgroundColor: 'transparent', padding: '4px 4px 4px 4px'}}
-            onClick={(e) => {
-            e.stopPropagation()
-            setIsShowNav(isShowNav => !isShowNav)
-            }}
+              type="button"
+              aria-label="svg-readme"
+              className="svg-octicon"
+              style={{
+                padding: '6px'
+              }}
+              onClick={(e) => {
+                e.stopPropagation()
+                setIsShowNav(isShowNav => !isShowNav)
+              }}
             >
-            <svg
-            aria-hidden="true"
-            height="16"
-            viewBox="0 0 16 16"
-            version="1.1"
-            width="16"
-            data-view-component="true"
-            >
-            <path d="M5.75 2.5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2 14a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1-6a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM2 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
-            </svg>
+              <svg
+                aria-hidden="true"
+                height="18"
+                viewBox="0 0 18 18"
+                version="1.1"
+                width="18"
+                data-view-component="true"
+              >
+                <path d="M5.75 2.5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2 14a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1-6a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM2 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+              </svg>
             </button>
 
-            <a id="readme" href="#readme" style={{ textTransform: 'uppercase' }}>
-            readme
-            </a>
-            </h4>
+            <h6>
+              <a
+                href="#readme"
+                aria-label="readme"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setIsShowNav(false)
+                }}
+              >
+                readme
+              </a>
+            </h6>
+          </StyleTitleNav>
+
           { isShowNav &&
-            <BuggerNav onShowNav={(e: any) => {
-              e.stopPropagation()
+            <BuggerNav onShowNav={() => {
               setIsShowNav(isShowNav => !isShowNav)
             }}
             />
           }
         </OutsideClickHandler>
-      </div>
-
-
+      </StyleReadme>
   )
 }
 
-function BuggerNav({ onShowNav }: { onShowNav(e: any): void }) {
+const StyleBuggerNav = styled.nav`
+  position: absolute;
+  background-color: var(--surface-1);
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px 15px;
+  top: 45px;
+  border-color: var(--gray-8);
+  border-radius: var(--border-radius);
+  animation-name: Select-nav;
+  
+  a {
+    color: var(--text-1);
+    &:hover {
+      background-color: var(--blue-bg);
+    }
+
+    &.active-nav {
+      background-color: var(--blue-bg);
+    }
+  }
+`
+
+function BuggerNav({ onShowNav }: { onShowNav(): void }) {
+  const [active, setActive] = useState("#")
+
   return (
-    <div className="nav" style={{
-      position: 'absolute',
-      backgroundColor: 'color(srgb 0.1412 0.1412 0.1412)',
-      minWidth: '280px',
-      display: 'flex',
-      flex: '0 1 auto',
-      flexDirection: 'column',
-      padding: '10px',
-      border: '1px solid var(--blue-color)',
-      borderRadius: '5px',
-      gap: '10px',
-      top: '45px',
-      left: '10px'
-    }}
-    >
-      <a href="#summary" onClick={onShowNav}>Summary</a>
-      <a href="#journey" onClick={onShowNav}>Revelant experiences</a>
-    </div>
+    <StyleBuggerNav className="rad-shadow">
+      {NavItems.map((item) =>
+        <a
+          key={item}
+          className={active === item ? 'active-nav' : ''}
+          href={`#${item}`}
+          onClick={() => {
+            setActive(item)
+            onShowNav()
+          }}
+        >
+          {item}
+        </a>
+      )}
+    </StyleBuggerNav>
   )
 }

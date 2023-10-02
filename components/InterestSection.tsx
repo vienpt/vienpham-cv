@@ -6,8 +6,14 @@ interface Props {
 }
 export default function InterestSection({ children }: Props) {
   return (
-    <div>
-      <h2>Interests</h2>
+    <div id="interests">
+      <h2
+        tabIndex={-1}
+        onClick={() => window.location.href="#interests"}
+        style={{ color: 'var(--red-4)'}}
+      >
+        Interests
+      </h2>
       <StringTagItem>
         {children}
       </StringTagItem>
