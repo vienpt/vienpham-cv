@@ -3,11 +3,47 @@ import {useState} from "react";
 import {useCookies} from "react-cookie";
 import Button from "./Button.tsx";
 import {satisfies} from "../data.ts";
+import styled from 'styled-components'
 
 interface Props {
   closeReview: () => void
   updateIsReviewActive: (val: boolean) => void
 }
+
+const StyleReview = styled.div`
+  position: relative;
+`
+
+const StyleReviewPopup = styled.div`
+  position: fixed;
+  bottom: 180px;
+  right: 4rem;
+  min-width: 200px;
+  max-height: 500px;
+  padding: 10px 16px;
+  background-color: var(--surface-1);
+  color: var(--text-1);
+  border-radius: var(--border-radius);
+`
+const StyleLine = styled.div`
+  margin-top: -3px;
+  margin-bottom: 10px;
+  border: 0.5px solid var(--primary)
+`
+
+const StyleReviewFooter = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+`
+
+const StyleTextArea = styled.textarea`
+  min-width: 270px;
+  background-color: #393939;
+  color: var(--white-color);
+  padding: 10px;
+`
 
 export default function Review({ closeReview, updateIsReviewActive }: Props) {
   const [, setReviewCookie]= useCookies(['is-review'])
@@ -33,18 +69,13 @@ export default function Review({ closeReview, updateIsReviewActive }: Props) {
   }
 
   return (
-    <div style={{ position: "relative" }}>
-      <div className={'cv-review-popup'}>
-        <p>Was this page helpful to you?</p>
-        <div style={{
-            marginTop: '-8px',
-            border: '0.5px solid rgb(253, 140, 1 , 1)'
-          }}
-        />
+    <StyleReview>
+      <StyleReviewPopup className="rad-shadow">
+        <h6>Was this page helpful to you?</h6>
+        <StyleLine />
 
-        <div style={{ display: 'grid', padding: '10px 0' }}>
-          <span style={{ fontSize: '0.8em'}}>Rate your experience:</span>
-
+        <div style={{ display: 'grid', gap: '10px' }}>
+          <span>Rate your experience:</span>
           <div style={{
             display: 'flex',
           }}>
@@ -56,8 +87,6 @@ export default function Review({ closeReview, updateIsReviewActive }: Props) {
                   onClick={() => setActiveItem(item.score)}
                   style={{
                     display: 'block',
-                    marginBlockStart: '1em',
-                    marginBlockEnd: '1em',
                     backgroundColor: '#393939',
                     borderRadius: 0,
                   }}
@@ -71,40 +100,35 @@ export default function Review({ closeReview, updateIsReviewActive }: Props) {
               )
             }
           </div>
-          <div>
-            <p style={{ fontSize: '0.8em'}}>Comment (optional):</p>
-            <textarea
+          <div style={{ display: 'grid', gap: '10px'}}>
+            <span>Comment (optional):</span>
+            <StyleTextArea
               rows={5}
-              style={{
-                minWidth: '270px',
-                backgroundColor: '#393939',
-                color: 'var(--white-color)',
-                padding: '10px'
-              }}
               onChange={e => setComment(e.target.value)}
             />
           </div>
         </div>
 
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginTop: '-10px'
-        }}>
-          <Button
-            click={closeReview}
-            text={'Cancel'}
-            bgColor={'#393939'}
-          />
-          <Button
-            click={handleSatisfied}
-            text={'Submit'}
-            bgColor={'var(--blue-color)'}
-            isSubmit={loading}
-          />
-        </div>
-      </div>
-    </div>
+        <StyleReviewFooter>
+          <button
+            type="button"
+            onClick={closeReview}
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            onClick={handleSatisfied}
+            style={{
+              backgroundColor: 'var(--blue-text)',
+              color: 'var(--surface-1)'
+            }}
+            disabled={loading}
+          >
+            Submit
+          </button>
+        </StyleReviewFooter>
+      </StyleReviewPopup>
+    </StyleReview>
   )
 }

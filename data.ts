@@ -90,5 +90,4 @@ export const NavItems : NavItem = [
   "experiences",
   "skills",
   "education",
-  "interests"
 ]
