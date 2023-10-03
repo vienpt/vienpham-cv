@@ -1,7 +1,6 @@
 import "./Review.css"
 import {useState} from "react";
 import {useCookies} from "react-cookie";
-import Button from "./Button.tsx";
 import {satisfies} from "../data.ts";
 import styled from 'styled-components'
 
