@@ -112,6 +112,10 @@ export default function Review({ closeReview, updateIsReviewActive }: Props) {
           <button
             type="button"
             onClick={closeReview}
+            style={{
+              backgroundColor: 'var(--gray-6)',
+              color: 'var(--surface-2)'
+            }}
           >
             Cancel
           </button>
