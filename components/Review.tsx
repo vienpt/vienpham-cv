@@ -39,8 +39,8 @@ const StyleReviewFooter = styled.div`
 
 const StyleTextArea = styled.textarea`
   min-width: 270px;
-  background-color: #393939;
-  color: var(--white-color);
+  background-color: var(--surface-2);
+  color: var(--text-1);
   padding: 10px;
 `
 
@@ -86,7 +86,7 @@ export default function Review({ closeReview, updateIsReviewActive }: Props) {
                   onClick={() => setActiveItem(item.score)}
                   style={{
                     display: 'block',
-                    backgroundColor: '#393939',
+                    backgroundColor: 'var(--gray-7)',
                     borderRadius: 0,
                   }}
                 >
