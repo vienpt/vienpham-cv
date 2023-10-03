@@ -1,8 +1,9 @@
-import "./Review.css"
+import "./Review.css";
 import {useState} from "react";
 import {useCookies} from "react-cookie";
 import {satisfies} from "../data.ts";
-import styled from 'styled-components'
+import styled from 'styled-components';
+import OutsideClickHandler from 'react-outside-click-handler';
 
 interface Props {
   closeReview: () => void
@@ -68,70 +69,74 @@ export default function Review({ closeReview, updateIsReviewActive }: Props) {
   }
 
   return (
-    <StyleReview>
-      <StyleReviewPopup className="rad-shadow">
-        <h6>Was this page helpful to you?</h6>
-        <StyleLine />
+    <OutsideClickHandler onOutsideClick={() => {
+      closeReview()
+    }}>
+      <StyleReview>
+        <StyleReviewPopup className="rad-shadow">
+          <h6>Was this page helpful to you?</h6>
+          <StyleLine />
 
-        <div style={{ display: 'grid', gap: '10px' }}>
-          <span>Rate your experience:</span>
-          <div style={{
-            display: 'flex',
-          }}>
-            {
-              satisfies.map(item =>
-                <button
-                  key={item.id}
-                  className={activeItem === item.score ? 'cv-review__icon-active-item' : 'cv-review__icon-item'}
-                  onClick={() => setActiveItem(item.score)}
-                  style={{
-                    display: 'block',
-                    backgroundColor: 'var(--gray-7)',
-                    borderRadius: 0,
-                  }}
-                >
-                  <img
-                    style={{ padding: '10px' }}
-                    src={activeItem === item.score ? `${item.img}-focus.svg` : `${item.img}.svg`}
-                    alt="smile-icon"
-                  />
-                </button>
-              )
-            }
+          <div style={{ display: 'grid', gap: '10px' }}>
+            <span>Rate your experience:</span>
+            <div style={{
+              display: 'flex',
+            }}>
+              {
+                satisfies.map(item =>
+                  <button
+                    key={item.id}
+                    className={activeItem === item.score ? 'cv-review__icon-active-item' : 'cv-review__icon-item'}
+                    onClick={() => setActiveItem(item.score)}
+                    style={{
+                      display: 'block',
+                      backgroundColor: 'var(--gray-7)',
+                      borderRadius: 0,
+                    }}
+                  >
+                    <img
+                      style={{ padding: '10px' }}
+                      src={activeItem === item.score ? `${item.img}-focus.svg` : `${item.img}.svg`}
+                      alt="smile-icon"
+                    />
+                  </button>
+                )
+              }
+            </div>
+            <div style={{ display: 'grid', gap: '10px'}}>
+              <span>Comment (optional):</span>
+              <StyleTextArea
+                rows={5}
+                onChange={e => setComment(e.target.value)}
+              />
+            </div>
           </div>
-          <div style={{ display: 'grid', gap: '10px'}}>
-            <span>Comment (optional):</span>
-            <StyleTextArea
-              rows={5}
-              onChange={e => setComment(e.target.value)}
-            />
-          </div>
-        </div>
 
-        <StyleReviewFooter>
-          <button
-            type="button"
-            onClick={closeReview}
-            style={{
-              backgroundColor: 'var(--gray-6)',
-              color: 'var(--surface-2)'
-            }}
-          >
-            Cancel
-          </button>
-          <button
-            type="button"
-            onClick={handleSatisfied}
-            style={{
-              backgroundColor: 'var(--blue-text)',
-              color: 'var(--surface-1)'
-            }}
-            disabled={loading}
-          >
-            Submit
-          </button>
-        </StyleReviewFooter>
-      </StyleReviewPopup>
-    </StyleReview>
+          <StyleReviewFooter>
+            <button
+              type="button"
+              onClick={closeReview}
+              style={{
+                backgroundColor: 'var(--gray-6)',
+                color: 'var(--surface-2)'
+              }}
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              onClick={handleSatisfied}
+              style={{
+                backgroundColor: 'var(--blue-text)',
+                color: 'var(--surface-1)'
+              }}
+              disabled={loading}
+            >
+              Submit
+            </button>
+          </StyleReviewFooter>
+        </StyleReviewPopup>
+      </StyleReview>
+    </OutsideClickHandler>
   )
 }
