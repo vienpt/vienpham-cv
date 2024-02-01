@@ -29,7 +29,7 @@ export default function RelevantExperience(experience: Experience) {
       <StyleExpDate>
         {
           `${convertWorkingTime(experience.workingTime.startDate)} - 
-          ${convertWorkingTime(experience.workingTime.endDate)}`
+          ${convertWorkingTime(experience.workingTime.endDate ?? 'Current')}`
         }
         {` // ${experience.city} , ${experience.country}`}
       </StyleExpDate>
